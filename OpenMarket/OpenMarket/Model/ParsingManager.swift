@@ -14,11 +14,11 @@ struct ParsingManager {
         self.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
-    func parse<Model: Decodable>(data: Data) -> Result<Model, Error> {
+    func parse<Model: Decodable>(data: Data) -> Result<Model, ParsingError> {
         let parsedData = try? decoder.decode(Model.self, from: data)
 
         guard let modelType = parsedData else {
-            fatalError()
+            return .failure(.decodingFail)
         }
         return .success(modelType)
     }
