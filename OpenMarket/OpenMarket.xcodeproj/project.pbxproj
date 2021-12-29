@@ -18,6 +18,7 @@
 		DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737D277B36370088FA6A /* ImageInformation.swift */; };
 		DF317380277B36470088FA6A /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737F277B36470088FA6A /* Vendor.swift */; };
 		DF317382277B375B0088FA6A /* ProductList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF317381277B375B0088FA6A /* ProductList.swift */; };
+		DF317384277BE0C20088FA6A /* ParsingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF317383277BE0C20088FA6A /* ParsingManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		DF31737D277B36370088FA6A /* ImageInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInformation.swift; sourceTree = "<group>"; };
 		DF31737F277B36470088FA6A /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
 		DF317381277B375B0088FA6A /* ProductList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductList.swift; sourceTree = "<group>"; };
+		DF317383277BE0C20088FA6A /* ParsingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				DF31737B277B361B0088FA6A /* Product.swift */,
 				DF31737D277B36370088FA6A /* ImageInformation.swift */,
 				DF31737F277B36470088FA6A /* Vendor.swift */,
+				DF317383277BE0C20088FA6A /* ParsingManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				DF317380277B36470088FA6A /* Vendor.swift in Sources */,
 				DF317382277B375B0088FA6A /* ProductList.swift in Sources */,
 				DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */,
+				DF317384277BE0C20088FA6A /* ParsingManager.swift in Sources */,
 				C70FB0FD25BEF61C00C9924E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
