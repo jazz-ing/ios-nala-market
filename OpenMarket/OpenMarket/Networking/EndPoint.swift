@@ -30,7 +30,7 @@ enum EndPoint: EndPointType {
         }
     }
 
-    var query: [String: Int] {
+    var query: RequestQuery {
         switch self {
         case .getProductList(let page, let numberOfItems):
             return [
@@ -41,13 +41,42 @@ enum EndPoint: EndPointType {
             return [:]
         }
     }
+
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .getProduct, .getProductList:
+            return .get
+        case .postProduct:
+            return .post
+        case .patchProduct:
+            return .patch
+        case .deleteProduct:
+            return .delete
+        }
+    }
+
+    var httpHeader: HTTPHeaders {
+        switch self {
+        case .getProduct, .getProductList:
+            return nil
+        case .postProduct, .patchProduct:
+            return [
+                "Content-Type": "multipart/form-data",
+                "identifier": "3424eb5f-660f-11ec-8eff-b53506094baa"
+            ]
+        case .deleteProduct:
+            return [
+                "identifier": "3424eb5f-660f-11ec-8eff-b53506094baa"
+            ]
+        }
+    }
 }
 
 extension EndPoint {
     func configure() -> URL? {
         var components = URLComponents(string: self.baseURL)
         components?.path = self.path
-        let queryItems = self.query.map { (key: String, value: Int) -> URLQueryItem in
+        let queryItems = self.query.map { (key: String, value: Any) -> URLQueryItem in
             let value = String(describing: value)
             return URLQueryItem(name: key, value: value)
         }
