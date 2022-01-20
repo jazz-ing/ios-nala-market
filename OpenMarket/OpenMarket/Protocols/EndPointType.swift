@@ -7,22 +7,23 @@
 
 import Foundation
 
-enum HTTPMethod: String {
-    case get
-    case post
-    case patch
-    case delete
-}
-
 typealias RequestQuery = [String: Any]
 typealias HTTPHeaders = [String: String]?
 
 protocol EndPointType {
+    
     var baseURL: String { get }
     var path: String { get }
     var query: RequestQuery { get }
     var httpMethod: HTTPMethod { get }
     var httpHeader: HTTPHeaders { get }
 
-    func configure() -> URL?
+    func configureURL() -> URL?
+}
+
+enum HTTPMethod: String {
+    case get
+    case post
+    case patch
+    case delete
 }

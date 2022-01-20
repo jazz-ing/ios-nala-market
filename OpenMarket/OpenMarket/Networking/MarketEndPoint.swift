@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EndPoint: EndPointType {
+enum MarketEndPoint: EndPointType {
 
     case getProduct(id: Int)
     case getProductList(page: Int, numberOfItems: Int)
@@ -59,12 +59,7 @@ enum EndPoint: EndPointType {
         switch self {
         case .getProduct, .getProductList:
             return nil
-        case .postProduct, .patchProduct:
-            return [
-                "Content-Type": "multipart/form-data",
-                "identifier": "3424eb5f-660f-11ec-8eff-b53506094baa"
-            ]
-        case .deleteProduct:
+        case .postProduct, .patchProduct, .deleteProduct:
             return [
                 "identifier": "3424eb5f-660f-11ec-8eff-b53506094baa"
             ]
@@ -72,8 +67,8 @@ enum EndPoint: EndPointType {
     }
 }
 
-extension EndPoint {
-    func configure() -> URL? {
+extension MarketEndPoint {
+    func configureURL() -> URL? {
         var components = URLComponents(string: self.baseURL)
         components?.path = self.path
         let queryItems = self.query.map { (key: String, value: Any) -> URLQueryItem in
