@@ -112,8 +112,8 @@
 		DF2B66B32797940A00CF0085 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				DF2B66B82797AE3200CF0085 /* NetworkManager.swift */,
 				DF2B66BC2798044E00CF0085 /* EndPoint.swift */,
+				DF2B66B82797AE3200CF0085 /* NetworkManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
