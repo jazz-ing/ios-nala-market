@@ -7,19 +7,15 @@
 
 import Foundation
 
-struct PatchProduct: Encodable {
+struct PatchProduct: BodyParameterType {
     
-    let name: String?
-    let descriptions: String?
-    let thumbnailId: Int?
-    let price: Int?
-    let currency: String?
-    let discountedPrice: Int?
-    let stock: Int?
-    let password: String
+    let parameter: Data?
+    let images: [Data]?
     
-    enum CodingKeys: String, CodingKey {
-        case name, descriptions, price, currency, discountedPrice, stock
-        case password = "secret"
+    var asDictionary: [String : Any?] {
+        [
+            "params": self.parameter,
+            "images": self.images
+        ]
     }
 }

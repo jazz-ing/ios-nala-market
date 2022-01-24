@@ -29,6 +29,8 @@
 		DF317387277BF2D50088FA6A /* ParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF317386277BF2D50088FA6A /* ParsingError.swift */; };
 		DF31738A277C152E0088FA6A /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF317389277C152E0088FA6A /* EndPointType.swift */; };
 		DF9684EA279EDDC800E93D9C /* BodyParameterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */; };
+		DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684EB279EE12200E93D9C /* PostParameter.swift */; };
+		DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684ED279EE13000E93D9C /* PatchParameter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		DF317386277BF2D50088FA6A /* ParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingError.swift; sourceTree = "<group>"; };
 		DF317389277C152E0088FA6A /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyParameterType.swift; sourceTree = "<group>"; };
+		DF9684EB279EE12200E93D9C /* PostParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
+		DF9684ED279EE13000E93D9C /* PatchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchParameter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +140,9 @@
 			isa = PBXGroup;
 			children = (
 				DF2B66C72799651100CF0085 /* PostProduct.swift */,
+				DF9684EB279EE12200E93D9C /* PostParameter.swift */,
 				DF2B66D0279982D000CF0085 /* PatchProduct.swift */,
+				DF9684ED279EE13000E93D9C /* PatchParameter.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -324,11 +330,13 @@
 			files = (
 				C70FB0FF25BEF61C00C9924E /* ViewController.swift in Sources */,
 				DF31737C277B361B0088FA6A /* Product.swift in Sources */,
+				DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */,
 				DF2B66C327990B1700CF0085 /* MultipartFormData.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
 				DF317380277B36470088FA6A /* Vendor.swift in Sources */,
 				DF2B66B92797AE3200CF0085 /* NetworkManager.swift in Sources */,
 				DF317382277B375B0088FA6A /* ProductList.swift in Sources */,
+				DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */,
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
 				DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */,
 				DF317384277BE0C20088FA6A /* ParsingManager.swift in Sources */,
