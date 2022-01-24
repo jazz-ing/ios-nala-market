@@ -28,6 +28,7 @@
 		DF317384277BE0C20088FA6A /* ParsingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF317383277BE0C20088FA6A /* ParsingManager.swift */; };
 		DF317387277BF2D50088FA6A /* ParsingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF317386277BF2D50088FA6A /* ParsingError.swift */; };
 		DF31738A277C152E0088FA6A /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF317389277C152E0088FA6A /* EndPointType.swift */; };
+		DF9684EA279EDDC800E93D9C /* BodyParameterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		DF317383277BE0C20088FA6A /* ParsingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingManager.swift; sourceTree = "<group>"; };
 		DF317386277BF2D50088FA6A /* ParsingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsingError.swift; sourceTree = "<group>"; };
 		DF317389277C152E0088FA6A /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
+		DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyParameterType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 			children = (
 				DF317389277C152E0088FA6A /* EndPointType.swift */,
 				DF2B66D2279988B400CF0085 /* NetworkManageable.swift */,
+				DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				DF2B66CD279971DF00CF0085 /* URLRequest+Extension.swift in Sources */,
 				DF317387277BF2D50088FA6A /* ParsingError.swift in Sources */,
 				C70FB0FD25BEF61C00C9924E /* SceneDelegate.swift in Sources */,
+				DF9684EA279EDDC800E93D9C /* BodyParameterType.swift in Sources */,
 				DF31738A277C152E0088FA6A /* EndPointType.swift in Sources */,
 				DF2B66D1279982D000CF0085 /* PatchProduct.swift in Sources */,
 				DF2B66C82799651100CF0085 /* PostProduct.swift in Sources */,
