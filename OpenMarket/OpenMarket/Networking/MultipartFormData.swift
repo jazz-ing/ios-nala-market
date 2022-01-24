@@ -40,9 +40,14 @@ final class MultipartFormData {
     let imageMimeType = "image/jpeg"
     private var body = Data()
 
-    func encode(json: Data, images: [Data]) -> Data {
-        appendJSON(withName: "params", from: json)
-        appendImages(withName: "images", from: images)
+    func encode(_ requestBody: BodyParameterType) -> Data {
+        for parameter in requestBody.asDictionary {
+            if let json = parameter.value as? Data {
+                appendJSON(withName: parameter.key, from: json)
+            } else if let images = parameter.value as? [Data] {
+                appendImages(withName: parameter.key, from: images)
+            }
+        }
         
         body.append(finalBoundaryData())
         return body
