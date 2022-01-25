@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias RequestQuery = [String: Any]
+typealias RequestQuery = [String: Any]?
 typealias HTTPHeaders = [String: String]?
 
 protocol EndPointType {

@@ -71,11 +71,13 @@ extension MarketEndPoint {
     func configureURL() -> URL? {
         var components = URLComponents(string: self.baseURL)
         components?.path = self.path
-        let queryItems = self.query.map { (key: String, value: Any) -> URLQueryItem in
-            let value = String(describing: value)
-            return URLQueryItem(name: key, value: value)
+        if let query = self.query {
+            let queryItems = query.map { (key: String, value: Any) -> URLQueryItem in
+                let value = String(describing: value)
+                return URLQueryItem(name: key, value: value)
+            }
+            components?.queryItems = queryItems
         }
-        components?.queryItems = queryItems
         return components?.url
     }
 }
