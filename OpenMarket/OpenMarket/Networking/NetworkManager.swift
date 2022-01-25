@@ -30,17 +30,19 @@ enum NetworkError: LocalizedError {
     }
 }
 
-final class NetworkManager {
+final class NetworkManager: NetworkManageable {
 
     private let session: URLSession
     private let successStatusCode: Range<Int> = (200 ..< 300)
+    private let multipartFormData: MultipartFormData
 
-    init(session: URLSession = .shared) {
+    init(session: URLSession = .shared, multipartFormData: MultipartFormData = .init()) {
         self.session = session
+        self.multipartFormData = multipartFormData
     }
 
     func performDataTask(with request: URLRequest,
-                         completion: @escaping (Result<Data, NetworkError>) -> Void) {
+                         completion: @escaping SessionResult) {        
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.requestFail(error)))
@@ -61,5 +63,32 @@ final class NetworkManager {
             completion(.success(data))
         }
         task.resume()
+    }
+    
+    func request(to endPoint: EndPointType,
+                 completion: @escaping SessionResult) {
+        guard let url = endPoint.configureURL() else {
+            completion(.failure(.invalidURL))
+            return
+        }
+
+        let request = URLRequest(url: url)
+        performDataTask(with: request, completion: completion)
+    }
+    
+    func request(to endPoint: EndPointType,
+                 with body: BodyParameterType,
+                 completion: @escaping SessionResult) {
+        guard let url = endPoint.configureURL() else {
+            completion(.failure(.invalidURL))
+            return
+        }
+        
+        let encoded = multipartFormData.encode(body)
+        let request = URLRequest(url: url,
+                                 endPoint: endPoint,
+                                 contentType: multipartFormData.contentType,
+                                 httpBody: encoded)
+        performDataTask(with: request, completion: completion)
     }
 }

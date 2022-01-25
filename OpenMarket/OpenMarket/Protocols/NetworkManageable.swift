@@ -10,8 +10,7 @@ import Foundation
 typealias SessionResult = (Result<Data, NetworkError>) -> Void
 
 protocol NetworkManageable {
-    func fetch(from url: EndPointType, completion: @escaping SessionResult)
-    func upload(_ product: PostProduct, to url: EndPointType, completion: @escaping SessionResult)
-    func edit(_ product: PatchProduct, to url: EndPointType, completion: @escaping SessionResult)
-    func delete(from url: EndPointType, completion: @escaping SessionResult)
+    
+    func request(to endPoint: EndPointType, completion: @escaping SessionResult)
+    func request(to endPoint: EndPointType, with body: BodyParameterType, completion: @escaping SessionResult)
 }
