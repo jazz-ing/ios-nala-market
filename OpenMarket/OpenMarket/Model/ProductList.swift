@@ -13,10 +13,10 @@ struct ProductList: Decodable {
     let totalCount: Int
     let firstIndex: Int
     let lastIndex: Int
+    let products: [Product]
     let lastPage: Int
     let hasNext: Bool
     let hasPrev: Bool
-    let products: [Product]
 
     enum CodingKeys: String, CodingKey {
         case itemsPerPage, totalCount, lastPage, hasNext, hasPrev
