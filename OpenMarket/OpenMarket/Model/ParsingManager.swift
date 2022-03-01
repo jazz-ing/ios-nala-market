@@ -8,14 +8,11 @@
 import Foundation
 
 struct ParsingManager {
+    
     private let decoder = JSONDecoder()
 
-    init() {
-        self.decoder.keyDecodingStrategy = .convertFromSnakeCase
-    }
-
-    func parse<Model: Decodable>(data: Data) -> Result<Model, ParsingError> {
-        let parsedData = try? decoder.decode(Model.self, from: data)
+    func parse<Model: Decodable>(_ data: Data, to model: Model.Type) -> Result<Model, ParsingError> {
+        let parsedData = try? decoder.decode(model, from: data)
 
         guard let modelType = parsedData else {
             return .failure(.decodingFail)

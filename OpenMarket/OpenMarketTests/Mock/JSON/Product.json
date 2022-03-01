@@ -1,0 +1,28 @@
+{
+  "id": 1,
+  "vendor_id": 100,
+  "name": "iPad",
+  "thumbnail": "",
+  "currency": "KRW",
+  "price": 10000.0,
+  "bargain_price": 1000.0,
+  "discounted_price": 9000.0,
+  "stock": 10,
+  "images": [
+      {
+          "id": 1,
+          "url": "",
+          "thumbnail_url": "",
+          "succeed": true,
+          "issued_at": ""
+      }
+  ],
+  "vendors": {
+    "name": "",
+    "id": 1,
+    "created_at": "",
+    "issued_at": ""
+  },
+  "created_at": "",
+  "issued_at": ""
+}

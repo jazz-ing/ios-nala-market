@@ -10,8 +10,8 @@ import Foundation
 struct PostProductBody: BodyParameterType {
     
     let parameter: Data
-    let images: [Data]
-    
+    let images: [Data]?
+
     var asDictionary: [String : Any?] {
         [
             "params": self.parameter,

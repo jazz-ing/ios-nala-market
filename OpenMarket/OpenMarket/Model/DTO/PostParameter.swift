@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostParameter: Encodable {
+struct PostParameter: Codable {
     
     let name: String
     let descriptions: String
@@ -18,7 +18,9 @@ struct PostParameter: Encodable {
     let password: String
 
     enum CodingKeys: String, CodingKey {
-        case name, descriptions, price, currency, discountedPrice, stock
+        
+        case name, descriptions, price, currency, stock
+        case discountedPrice = "discounted_price"
         case password = "secret"
     }
 }

@@ -32,17 +32,17 @@ enum NetworkError: LocalizedError {
 
 final class NetworkManager: NetworkManageable {
 
-    private let session: URLSession
+    private let session: URLSessionProtocol
     private let successStatusCode: Range<Int> = (200 ..< 300)
     private let multipartFormData: MultipartFormData
 
-    init(session: URLSession = .shared, multipartFormData: MultipartFormData = .init()) {
+    init(session: URLSessionProtocol = URLSession.shared, multipartFormData: MultipartFormData = .init()) {
         self.session = session
         self.multipartFormData = multipartFormData
     }
 
-    func performDataTask(with request: URLRequest,
-                         completion: @escaping SessionResult) {        
+    private func performDataTask(with request: URLRequest,
+                                 completion: @escaping SessionResult) {
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.requestFail(error)))
@@ -64,7 +64,7 @@ final class NetworkManager: NetworkManageable {
         }
         task.resume()
     }
-    
+
     func request(to endPoint: EndPointType,
                  completion: @escaping SessionResult) {
         guard let url = endPoint.configureURL() else {
@@ -75,7 +75,7 @@ final class NetworkManager: NetworkManageable {
         let request = URLRequest(url: url)
         performDataTask(with: request, completion: completion)
     }
-    
+
     func request(to endPoint: EndPointType,
                  with body: BodyParameterType,
                  completion: @escaping SessionResult) {
@@ -83,7 +83,7 @@ final class NetworkManager: NetworkManageable {
             completion(.failure(.invalidURL))
             return
         }
-        
+
         let encoded = multipartFormData.encode(body)
         let request = URLRequest(url: url,
                                  endPoint: endPoint,

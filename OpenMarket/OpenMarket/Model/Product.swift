@@ -24,8 +24,11 @@ struct Product: Decodable {
     let vendor: Vendor?
 
     enum CodingKeys: String, CodingKey {
-        case id, vendorId, name, currency, price, description, bargainPrice, discountedPrice, stock
+        case id, name, currency, price, description, stock
+        case vendorId = "vendor_id"
         case thumbnailURL = "thumbnail"
+        case bargainPrice = "bargain_price"
+        case discountedPrice = "discounted_price"
         case createdDate = "created_at"
         case issuedDate = "issued_at"
         case imageInformations = "images"
