@@ -30,7 +30,7 @@ enum NetworkError: LocalizedError {
     }
 }
 
-final class NetworkManager: NetworkManageable {
+struct NetworkManager: NetworkManageable {
 
     private let session: URLSessionProtocol
     private let successStatusCode: Range<Int> = (200 ..< 300)
@@ -41,8 +41,8 @@ final class NetworkManager: NetworkManageable {
         self.multipartFormData = multipartFormData
     }
 
-    private func performDataTask(with request: URLRequest,
-                                 completion: @escaping SessionResult) {
+    private func dataTask(with request: URLRequest,
+                          completion: @escaping SessionResult) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.requestFail(error)))
@@ -59,12 +59,22 @@ final class NetworkManager: NetworkManageable {
                 completion(.failure(.emptyData))
                 return
             }
-
             completion(.success(data))
         }
-        task.resume()
+        return task
     }
-
+    
+    func request(to urlString: String,
+                 completion: @escaping SessionResult) -> URLSessionDataTask? {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(.invalidURL))
+            return nil
+        }
+        
+        let request = URLRequest(url: url)
+        return dataTask(with: request, completion: completion)
+    }
+    
     func request(to endPoint: EndPointType,
                  completion: @escaping SessionResult) {
         guard let url = endPoint.configureURL() else {
@@ -73,7 +83,7 @@ final class NetworkManager: NetworkManageable {
         }
 
         let request = URLRequest(url: url)
-        performDataTask(with: request, completion: completion)
+        dataTask(with: request, completion: completion).resume()
     }
 
     func request(to endPoint: EndPointType,
@@ -89,6 +99,6 @@ final class NetworkManager: NetworkManageable {
                                  endPoint: endPoint,
                                  contentType: multipartFormData.contentType,
                                  httpBody: encoded)
-        performDataTask(with: request, completion: completion)
+        dataTask(with: request, completion: completion).resume()
     }
 }
