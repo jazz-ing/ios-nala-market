@@ -31,6 +31,7 @@
 		DF5C405C27D0EAD100A7E2DF /* MarketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C405B27D0EAD100A7E2DF /* MarketListViewModel.swift */; };
 		DF5C405E27D1F5EA00A7E2DF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C405D27D1F5EA00A7E2DF /* Observable.swift */; };
 		DF5C406427D7718C00A7E2DF /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C406327D7718C00A7E2DF /* Cancellable.swift */; };
+		DF5C406827D77B5A00A7E2DF /* ThumbnailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C406727D77B5A00A7E2DF /* ThumbnailUseCase.swift */; };
 		DF9684EA279EDDC800E93D9C /* BodyParameterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */; };
 		DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684EB279EE12200E93D9C /* PostParameter.swift */; };
 		DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684ED279EE13000E93D9C /* PatchParameter.swift */; };
@@ -83,6 +84,7 @@
 		DF5C405B27D0EAD100A7E2DF /* MarketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListViewModel.swift; sourceTree = "<group>"; };
 		DF5C405D27D1F5EA00A7E2DF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		DF5C406327D7718C00A7E2DF /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
+		DF5C406727D77B5A00A7E2DF /* ThumbnailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailUseCase.swift; sourceTree = "<group>"; };
 		DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyParameterType.swift; sourceTree = "<group>"; };
 		DF9684EB279EE12200E93D9C /* PostParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		DF9684ED279EE13000E93D9C /* PatchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchParameter.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				C70FB0FE25BEF61C00C9924E /* ViewController.swift */,
 				DF5C405627D0E00800A7E2DF /* ViewModels */,
+				DF5C406527D77B3100A7E2DF /* MarketListCell */,
 			);
 			path = MarketListView;
 			sourceTree = "<group>";
@@ -289,6 +292,22 @@
 			isa = PBXGroup;
 			children = (
 				DF5C405727D0E93400A7E2DF /* MarketListUseCaseProtocol.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DF5C406527D77B3100A7E2DF /* MarketListCell */ = {
+			isa = PBXGroup;
+			children = (
+				DF5C406627D77B4D00A7E2DF /* ViewModels */,
+			);
+			path = MarketListCell;
+			sourceTree = "<group>";
+		};
+		DF5C406627D77B4D00A7E2DF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DF5C406727D77B5A00A7E2DF /* ThumbnailUseCase.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -483,6 +502,7 @@
 				DF5C405C27D0EAD100A7E2DF /* MarketListViewModel.swift in Sources */,
 				DF5C405527CE3C6F00A7E2DF /* MarketListUseCase.swift in Sources */,
 				DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */,
+				DF5C406827D77B5A00A7E2DF /* ThumbnailUseCase.swift in Sources */,
 				DF2B66C327990B1700CF0085 /* MultipartFormData.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
 				DF317380277B36470088FA6A /* Vendor.swift in Sources */,
