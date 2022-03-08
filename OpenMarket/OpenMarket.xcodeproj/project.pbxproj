@@ -30,6 +30,7 @@
 		DF5C405827D0E93400A7E2DF /* MarketListUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C405727D0E93400A7E2DF /* MarketListUseCaseProtocol.swift */; };
 		DF5C405C27D0EAD100A7E2DF /* MarketListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C405B27D0EAD100A7E2DF /* MarketListViewModel.swift */; };
 		DF5C405E27D1F5EA00A7E2DF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C405D27D1F5EA00A7E2DF /* Observable.swift */; };
+		DF5C406427D7718C00A7E2DF /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C406327D7718C00A7E2DF /* Cancellable.swift */; };
 		DF9684EA279EDDC800E93D9C /* BodyParameterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */; };
 		DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684EB279EE12200E93D9C /* PostParameter.swift */; };
 		DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684ED279EE13000E93D9C /* PatchParameter.swift */; };
@@ -81,6 +82,7 @@
 		DF5C405727D0E93400A7E2DF /* MarketListUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListUseCaseProtocol.swift; sourceTree = "<group>"; };
 		DF5C405B27D0EAD100A7E2DF /* MarketListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListViewModel.swift; sourceTree = "<group>"; };
 		DF5C405D27D1F5EA00A7E2DF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		DF5C406327D7718C00A7E2DF /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyParameterType.swift; sourceTree = "<group>"; };
 		DF9684EB279EE12200E93D9C /* PostParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		DF9684ED279EE13000E93D9C /* PatchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchParameter.swift; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				DF317389277C152E0088FA6A /* EndPointType.swift */,
 				DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */,
 				DFC5807C27AE2BA400CCC0E9 /* URLSessionProtocol.swift */,
+				DF5C406327D7718C00A7E2DF /* Cancellable.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				DF317382277B375B0088FA6A /* ProductList.swift in Sources */,
 				DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */,
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
+				DF5C406427D7718C00A7E2DF /* Cancellable.swift in Sources */,
 				DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */,
 				DF317384277BE0C20088FA6A /* ParsingManager.swift in Sources */,
 				DF2B66CD279971DF00CF0085 /* URLRequest+Extension.swift in Sources */,
