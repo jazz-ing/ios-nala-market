@@ -20,6 +20,8 @@
 		DF2B66CD279971DF00CF0085 /* URLRequest+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B66CC279971DF00CF0085 /* URLRequest+Extension.swift */; };
 		DF2B66D1279982D000CF0085 /* PatchProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B66D0279982D000CF0085 /* PatchProduct.swift */; };
 		DF2B66D3279988B400CF0085 /* NetworkManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B66D2279988B400CF0085 /* NetworkManageable.swift */; };
+		DF30E99A27DAD75700781392 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30E99927DAD75700781392 /* String+Extension.swift */; };
+		DF30E99C27DAD84700781392 /* Int+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30E99B27DAD84700781392 /* Int+Extension.swift */; };
 		DF31737C277B361B0088FA6A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737B277B361B0088FA6A /* Product.swift */; };
 		DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737D277B36370088FA6A /* ImageInformation.swift */; };
 		DF317380277B36470088FA6A /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737F277B36470088FA6A /* Vendor.swift */; };
@@ -32,6 +34,7 @@
 		DF5C405E27D1F5EA00A7E2DF /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C405D27D1F5EA00A7E2DF /* Observable.swift */; };
 		DF5C406427D7718C00A7E2DF /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C406327D7718C00A7E2DF /* Cancellable.swift */; };
 		DF5C406827D77B5A00A7E2DF /* ThumbnailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C406727D77B5A00A7E2DF /* ThumbnailUseCase.swift */; };
+		DF5C406A27D77CD200A7E2DF /* MarketListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF5C406927D77CD200A7E2DF /* MarketListCellViewModel.swift */; };
 		DF9684EA279EDDC800E93D9C /* BodyParameterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */; };
 		DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684EB279EE12200E93D9C /* PostParameter.swift */; };
 		DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684ED279EE13000E93D9C /* PatchParameter.swift */; };
@@ -73,6 +76,8 @@
 		DF2B66CC279971DF00CF0085 /* URLRequest+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Extension.swift"; sourceTree = "<group>"; };
 		DF2B66D0279982D000CF0085 /* PatchProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchProduct.swift; sourceTree = "<group>"; };
 		DF2B66D2279988B400CF0085 /* NetworkManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManageable.swift; sourceTree = "<group>"; };
+		DF30E99927DAD75700781392 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		DF30E99B27DAD84700781392 /* Int+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extension.swift"; sourceTree = "<group>"; };
 		DF31737B277B361B0088FA6A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		DF31737D277B36370088FA6A /* ImageInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInformation.swift; sourceTree = "<group>"; };
 		DF31737F277B36470088FA6A /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
@@ -85,6 +90,7 @@
 		DF5C405D27D1F5EA00A7E2DF /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		DF5C406327D7718C00A7E2DF /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		DF5C406727D77B5A00A7E2DF /* ThumbnailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailUseCase.swift; sourceTree = "<group>"; };
+		DF5C406927D77CD200A7E2DF /* MarketListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListCellViewModel.swift; sourceTree = "<group>"; };
 		DF9684E9279EDDC800E93D9C /* BodyParameterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyParameterType.swift; sourceTree = "<group>"; };
 		DF9684EB279EE12200E93D9C /* PostParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		DF9684ED279EE13000E93D9C /* PatchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchParameter.swift; sourceTree = "<group>"; };
@@ -196,6 +202,8 @@
 			isa = PBXGroup;
 			children = (
 				DF2B66CC279971DF00CF0085 /* URLRequest+Extension.swift */,
+				DF30E99927DAD75700781392 /* String+Extension.swift */,
+				DF30E99B27DAD84700781392 /* Int+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				DF5C406727D77B5A00A7E2DF /* ThumbnailUseCase.swift */,
+				DF5C406927D77CD200A7E2DF /* MarketListCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -504,6 +513,7 @@
 				DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */,
 				DF5C406827D77B5A00A7E2DF /* ThumbnailUseCase.swift in Sources */,
 				DF2B66C327990B1700CF0085 /* MultipartFormData.swift in Sources */,
+				DF30E99A27DAD75700781392 /* String+Extension.swift in Sources */,
 				C70FB0FB25BEF61C00C9924E /* AppDelegate.swift in Sources */,
 				DF317380277B36470088FA6A /* Vendor.swift in Sources */,
 				DF2B66B92797AE3200CF0085 /* NetworkManager.swift in Sources */,
@@ -512,8 +522,10 @@
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
 				DF5C406427D7718C00A7E2DF /* Cancellable.swift in Sources */,
 				DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */,
+				DF5C406A27D77CD200A7E2DF /* MarketListCellViewModel.swift in Sources */,
 				DF317384277BE0C20088FA6A /* ParsingManager.swift in Sources */,
 				DF2B66CD279971DF00CF0085 /* URLRequest+Extension.swift in Sources */,
+				DF30E99C27DAD84700781392 /* Int+Extension.swift in Sources */,
 				DF5C405E27D1F5EA00A7E2DF /* Observable.swift in Sources */,
 				C70FB0FD25BEF61C00C9924E /* SceneDelegate.swift in Sources */,
 				DF9684EA279EDDC800E93D9C /* BodyParameterType.swift in Sources */,
