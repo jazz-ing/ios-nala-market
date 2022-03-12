@@ -8,7 +8,7 @@
 import Foundation
 import UIKit.UIImage
 
-final class MarketListCellViewModel {
+final class MarketCollectionViewCellViewModel {
     
     struct ProductData {
         let name: String
@@ -22,7 +22,7 @@ final class MarketListCellViewModel {
     
     enum State {
         case empty
-        case update(MarketListCellViewModel.ProductData)
+        case update(MarketCollectionViewCellViewModel.ProductData)
         case error(Error)
     }
 
@@ -36,7 +36,7 @@ final class MarketListCellViewModel {
         self.product = product
     }
     
-    func fire() {
+    func setContents() {
         setTextFormats()
         setThumbnail()
     }
@@ -96,7 +96,7 @@ final class MarketListCellViewModel {
 
 // MARK: - NameSpace
 
-extension MarketListCellViewModel {
+extension MarketCollectionViewCellViewModel {
 
     private enum Style {
 
