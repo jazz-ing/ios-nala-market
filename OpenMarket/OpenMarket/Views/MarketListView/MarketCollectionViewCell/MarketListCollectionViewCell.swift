@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MarketListCollectionViewCell: UICollectionViewCell {
+class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
     
     static let identifier = Text.cellIdentifier
     private var viewModel: MarketCollectionViewCellViewModel?
