@@ -33,7 +33,7 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .label
         label.textAlignment = .center
         label.accessibilityIdentifier = Style.AccessibilityIdentifier.nameLabel
@@ -46,14 +46,15 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         stackView.axis = .horizontal
         stackView.alignment = .leading
         stackView.distribution = .equalSpacing
+        stackView.spacing = Style.PriceStackView.spacing
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     private let discountedPriceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.textColor = .label
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        label.textColor = .tertiaryLabel
         label.accessibilityIdentifier = Style.AccessibilityIdentifier.discountedLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -70,8 +71,8 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
     
     private let stockLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .caption1)
-        label.textColor = .tertiaryLabel
+        label.font = UIFont.preferredFont(forTextStyle: .footnote)
+        label.textColor = .secondaryLabel
         label.accessibilityIdentifier = Style.AccessibilityIdentifier.stockLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -199,6 +200,10 @@ extension MarketListCollectionViewCell {
         
         enum LabelStackView {
             static let spacing: CGFloat = 8
+        }
+
+        enum PriceStackView {
+            static let spacing: CGFloat = 6
         }
         
         enum AccessibilityIdentifier {
