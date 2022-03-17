@@ -118,6 +118,20 @@ extension MarketMainViewController {
     }
 }
 
+// MARK: - Pagination
+
+extension MarketMainViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.height
+
+        if offsetY > (contentHeight - height) {
+            viewModel.update()
+        }
+    }
+}
+
 // MARK: - CollectionView DataSource
 
 extension MarketMainViewController: UICollectionViewDataSource {
