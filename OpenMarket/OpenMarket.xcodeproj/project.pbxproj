@@ -25,6 +25,8 @@
 		DF30E9AF27DC662200781392 /* MarketGridCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30E9AE27DC662200781392 /* MarketGridCollectionViewCell.swift */; };
 		DF30E9B127DC719400781392 /* MarketListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30E9B027DC719400781392 /* MarketListCollectionViewCell.swift */; };
 		DF30E9B427DC769D00781392 /* MarketCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30E9B327DC769D00781392 /* MarketCellType.swift */; };
+		DF30E9BA27E2D33300781392 /* ProductDetailUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30E9B927E2D33200781392 /* ProductDetailUseCase.swift */; };
+		DF30E9BC27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30E9BB27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift */; };
 		DF31737C277B361B0088FA6A /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737B277B361B0088FA6A /* Product.swift */; };
 		DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737D277B36370088FA6A /* ImageInformation.swift */; };
 		DF317380277B36470088FA6A /* Vendor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF31737F277B36470088FA6A /* Vendor.swift */; };
@@ -84,6 +86,8 @@
 		DF30E9AE27DC662200781392 /* MarketGridCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketGridCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF30E9B027DC719400781392 /* MarketListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketListCollectionViewCell.swift; sourceTree = "<group>"; };
 		DF30E9B327DC769D00781392 /* MarketCellType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCellType.swift; sourceTree = "<group>"; };
+		DF30E9B927E2D33200781392 /* ProductDetailUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailUseCase.swift; sourceTree = "<group>"; };
+		DF30E9BB27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailUseCaseProtocol.swift; sourceTree = "<group>"; };
 		DF31737B277B361B0088FA6A /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		DF31737D277B36370088FA6A /* ImageInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInformation.swift; sourceTree = "<group>"; };
 		DF31737F277B36470088FA6A /* Vendor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vendor.swift; sourceTree = "<group>"; };
@@ -222,6 +226,22 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		DF30E9B527E2D20200781392 /* ProductDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				DF30E9B827E2D31000781392 /* ViewModels */,
+			);
+			path = ProductDetailView;
+			sourceTree = "<group>";
+		};
+		DF30E9B827E2D31000781392 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DF30E9B927E2D33200781392 /* ProductDetailUseCase.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		DF317371277B266A0088FA6A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				DF5C405327CE3C3200A7E2DF /* MarketListView */,
+				DF30E9B527E2D20200781392 /* ProductDetailView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -315,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				DF5C405727D0E93400A7E2DF /* MarketListUseCaseProtocol.swift */,
+				DF30E9BB27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -527,6 +549,7 @@
 				C70FB0FF25BEF61C00C9924E /* MarketMainViewController.swift in Sources */,
 				DF31737C277B361B0088FA6A /* Product.swift in Sources */,
 				DF5C405C27D0EAD100A7E2DF /* MarketListViewModel.swift in Sources */,
+				DF30E9BA27E2D33300781392 /* ProductDetailUseCase.swift in Sources */,
 				DF5C405527CE3C6F00A7E2DF /* MarketListUseCase.swift in Sources */,
 				DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */,
 				DF5C406827D77B5A00A7E2DF /* ThumbnailUseCase.swift in Sources */,
@@ -539,6 +562,7 @@
 				DF317382277B375B0088FA6A /* ProductList.swift in Sources */,
 				DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */,
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
+				DF30E9BC27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift in Sources */,
 				DF5C406427D7718C00A7E2DF /* Cancellable.swift in Sources */,
 				DF31737E277B36370088FA6A /* ImageInformation.swift in Sources */,
 				DF5C406A27D77CD200A7E2DF /* MarketListCellViewModel.swift in Sources */,
