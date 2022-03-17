@@ -13,7 +13,7 @@ final class MarketMainViewController: UIViewController {
         case list
     }
 
-    private var cellType: CellType = .list
+    private var cellType: CellType = .grid
     private let viewModel = MarketListViewModel()
 
     private let collectionView: UICollectionView = {
@@ -34,6 +34,7 @@ final class MarketMainViewController: UIViewController {
         setupViews()
         setConstraints()
         setDelegates()
+        setupNavigationBar()
         bindWithViewModel()
         viewModel.update()
     }
@@ -67,7 +68,7 @@ extension MarketMainViewController {
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
@@ -77,6 +78,43 @@ extension MarketMainViewController {
     private func setDelegates() {
         collectionView.dataSource = self
         collectionView.delegate = self
+    }
+
+    private func setupNavigationBar() {
+        navigationController?.navigationBar.tintColor = .systemOrange
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.shadowImage = UIImage()
+
+        navigationItem.title = Style.navigationTitle
+        let changingCellTypeButton = UIBarButtonItem(image: Style.ChangingCellTypeBarButton.listImage,
+                                                     style: .plain,
+                                                     target: self,
+                                                     action: #selector(changingCellTypeButtonTapped))
+        let addProductButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                               target: self,
+                                               action: #selector(addProductButtonTapped))
+        navigationItem.rightBarButtonItems = [addProductButton, changingCellTypeButton]
+    }
+
+    @objc private func changingCellTypeButtonTapped() {
+        changeCellType()
+        changeCellTypeBarButtonImage()
+        collectionView.reloadData()
+    }
+
+    private func changeCellType() {
+        cellType = cellType == .grid ? .list : .grid
+    }
+
+    private func changeCellTypeBarButtonImage() {
+        if cellType == .grid {
+            navigationItem.rightBarButtonItems?.last?.image = Style.ChangingCellTypeBarButton.listImage
+        } else {
+            navigationItem.rightBarButtonItems?.last?.image = Style.ChangingCellTypeBarButton.gridImage
+        }
+    }
+
+    @objc private func addProductButtonTapped() {
     }
 }
 
@@ -155,6 +193,8 @@ extension MarketMainViewController: UICollectionViewDelegateFlowLayout {
 extension MarketMainViewController {
 
     private enum Style {
+        
+        static let navigationTitle: String = "날라 마켓"
 
         enum Cell {
             static let gridItemsPerRow: CGFloat = 2
@@ -162,6 +202,11 @@ extension MarketMainViewController {
             static let gridItemSpacing: CGFloat = 10
             static let gridSectionInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
             static let listItemPerHeight: CGFloat = 5
+        }
+        
+        enum ChangingCellTypeBarButton {
+            static let gridImage = UIImage(systemName: "square.grid.2x2")
+            static let listImage = UIImage(systemName: "list.dash")
         }
 
         enum AccessibilityIdentifier {
