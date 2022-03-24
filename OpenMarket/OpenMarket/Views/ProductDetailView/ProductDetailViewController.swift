@@ -130,6 +130,35 @@ final class ProductDetailViewController: UIViewController {
     }
 }
 
+// MARK: - Binding Method
+
+extension ProductDetailViewController {
+    
+    func bind(with viewModel: ProductDetailViewModel) {
+        self.viewModel = viewModel
+
+        viewModel.state.bind(listener: { [weak self] state in
+            switch state {
+            case .populatedDetail(let productData):
+                DispatchQueue.main.async {
+                    self?.setPageNumber(to: productData.numberOfImages)
+                    self?.nameLabel.text = productData.name
+                    self?.stockLabel.text = productData.stock
+                    self?.discountedPriceLabel.attributedText = productData.discountedPrice
+                    self?.priceLabel.text = productData.price
+                    self?.descriptionTextView.text = productData.description
+                }
+            case .populatedImage(let image, let index):
+                DispatchQueue.main.async {
+                    self?.addProductImage(image, to: index)
+                }
+            default:
+                break
+            }
+        })
+    }
+}
+
 // MARK: - View Configuring Method
 
 extension ProductDetailViewController {

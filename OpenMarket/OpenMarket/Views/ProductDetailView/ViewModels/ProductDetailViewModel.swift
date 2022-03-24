@@ -18,6 +18,7 @@ final class ProductDetailViewModel {
         let price: String
         let isOutOfStock: Bool
         let stock: String
+        let numberOfImages: Int
     }
     
     enum State {
@@ -110,7 +111,8 @@ final class ProductDetailViewModel {
                                       discountedPrice: discountedPrice,
                                       price: price,
                                       isOutOfStock: isOutOfStock,
-                                      stock: stock)
+                                      stock: stock,
+                                      numberOfImages: product.imageInformations?.count ?? .zero)
 
         self.state.value = .populatedDetail(productData)
     }
