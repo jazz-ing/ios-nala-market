@@ -201,12 +201,26 @@ extension ProductDetailViewController {
         navigationController?.navigationBar.topItem?.title = Style.emptyText
     }
 
+    private func setDelegate() {
+        imageScrollView.delegate = self
+    }
+
     private func setPageNumber(to numberOfImages: Int) {
         imageScrollViewPageControl.numberOfPages = numberOfImages
     }
 
     private func setCurrentPage(to currentPage: Int) {
         imageScrollViewPageControl.currentPage = currentPage
+    }
+}
+
+// MARK: - ScrollView Delegate
+
+extension ProductDetailViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentPage = Int(round(scrollView.contentOffset.x / scrollView.frame.size.width))
+        setCurrentPage(to: currentPage)
     }
 }
 
