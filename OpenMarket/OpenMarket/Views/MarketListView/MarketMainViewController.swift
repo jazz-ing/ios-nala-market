@@ -169,6 +169,20 @@ extension MarketMainViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - CollectionView Deleagte
+
+extension MarketMainViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let product = viewModel.products[indexPath.item]
+        let productDetailVC = ProductDetailViewController()
+        let productDetailViewModel = ProductDetailViewModel(product: product)
+        productDetailVC.bind(with: productDetailViewModel)
+        productDetailViewModel.update()
+        navigationController?.pushViewController(productDetailVC, animated: true)
+    }
+}
+
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension MarketMainViewController: UICollectionViewDelegateFlowLayout {
