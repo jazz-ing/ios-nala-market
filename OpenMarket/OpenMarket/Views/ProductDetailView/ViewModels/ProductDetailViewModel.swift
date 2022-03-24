@@ -29,7 +29,7 @@ final class ProductDetailViewModel {
     }
 
     private let useCase: ProductDetailUseCaseProtocol
-    private let semaphore = DispatchSemaphore(value: 3)
+    private let semaphore = DispatchSemaphore(value: 1)
     private(set) var state: Observable<State> = Observable(.fetching)
     private(set) var product: Product
     private(set) var images: [UIImage] = []
@@ -41,8 +41,8 @@ final class ProductDetailViewModel {
     }
     
     func update() {
-        self.fetchProductDetail()
-        self.fetchImages()
+        fetchProductDetail()
+        fetchImages()
     }
     
     private func fetchProductDetail() {
@@ -64,6 +64,7 @@ final class ProductDetailViewModel {
         guard let images = product.imageInformations else {
             return
         }
+        semaphore.signal()
         for image in images {
             if let index = images.firstIndex(where: { $0 == image }) {
                 fetchImage(of: index, from: image.thumbnailURL)
@@ -72,6 +73,7 @@ final class ProductDetailViewModel {
     }
 
     private func fetchImage(of index: Int, from urlString: String) {
+        semaphore.wait()
         let imageTask = useCase.fetchImage(from: urlString) { [weak self] result in
             switch result {
             case .success(let image):
