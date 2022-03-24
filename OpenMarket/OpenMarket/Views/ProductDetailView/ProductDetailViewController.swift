@@ -126,12 +126,27 @@ final class ProductDetailViewController: UIViewController {
         setupViews()
         setConstraints()
         setupNavigationBar()
+        setDelegate()
     }
 }
 
 // MARK: - View Configuring Method
 
 extension ProductDetailViewController {
+    
+    private func addProductImage(_ image: UIImage, to index: Int) {
+        let imageView = UIImageView()
+        let xPosition: CGFloat = view.frame.width * CGFloat(index)
+        imageView.frame = .init(x: xPosition,
+                                y: .zero,
+                                width: imageScrollView.bounds.width,
+                                height: imageScrollView.bounds.height)
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        imageScrollView.insertSubview(imageView, belowSubview: imageScrollViewPageControl)
+        imageScrollView.contentSize.width = imageView.frame.width * CGFloat(index + Style.indexOffset)
+        imageViews.append(imageView)
+    }
 
     private func setupViews() {
         view.addSubview(contentScrollView)
@@ -199,6 +214,7 @@ extension ProductDetailViewController {
 
 enum Style {
 
+    static let indexOffset: Int = 1
     static let stackViewSpacing: CGFloat = 5
     static let padding: CGFloat = 10
     static let emptyText: String = ""
