@@ -185,6 +185,14 @@ extension ProductDetailViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.topItem?.title = Style.emptyText
     }
+
+    private func setPageNumber(to numberOfImages: Int) {
+        imageScrollViewPageControl.numberOfPages = numberOfImages
+    }
+
+    private func setCurrentPage(to currentPage: Int) {
+        imageScrollViewPageControl.currentPage = currentPage
+    }
 }
 
 // MARK: - NameSpaces
