@@ -53,6 +53,7 @@
 		DFC5808527AFE19F00CCC0E9 /* Product.json in Resources */ = {isa = PBXBuildFile; fileRef = DFC5808427AFE19F00CCC0E9 /* Product.json */; };
 		DFC5808727AFE56800CCC0E9 /* .swiftLint.yml in Resources */ = {isa = PBXBuildFile; fileRef = DFC5808627AFE56800CCC0E9 /* .swiftLint.yml */; };
 		DFC5808927AFE67E00CCC0E9 /* ProductList.json in Resources */ = {isa = PBXBuildFile; fileRef = DFC5808827AFE67E00CCC0E9 /* ProductList.json */; };
+		DFE72AEE27EDE34D0042F23A /* ProductAddUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE72AED27EDE34D0042F23A /* ProductAddUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		DFC5808427AFE19F00CCC0E9 /* Product.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Product.json; sourceTree = "<group>"; };
 		DFC5808627AFE56800CCC0E9 /* .swiftLint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftLint.yml; sourceTree = "<group>"; };
 		DFC5808827AFE67E00CCC0E9 /* ProductList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductList.json; sourceTree = "<group>"; };
+		DFE72AED27EDE34D0042F23A /* ProductAddUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 			children = (
 				DF5C405327CE3C3200A7E2DF /* MarketListView */,
 				DF30E9B527E2D20200781392 /* ProductDetailView */,
+				DFE72AEC27EDE3120042F23A /* ProductAddView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -401,6 +404,14 @@
 				DFC5808227AFD9E000CCC0E9 /* MagSafe.jpeg */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		DFE72AEC27EDE3120042F23A /* ProductAddView */ = {
+			isa = PBXGroup;
+			children = (
+				DFE72AED27EDE34D0042F23A /* ProductAddUseCase.swift */,
+			);
+			path = ProductAddView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -567,6 +578,7 @@
 				DF317380277B36470088FA6A /* Vendor.swift in Sources */,
 				DF2B66B92797AE3200CF0085 /* NetworkManager.swift in Sources */,
 				DF317382277B375B0088FA6A /* ProductList.swift in Sources */,
+				DFE72AEE27EDE34D0042F23A /* ProductAddUseCase.swift in Sources */,
 				DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */,
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
 				DF30E9BC27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift in Sources */,
