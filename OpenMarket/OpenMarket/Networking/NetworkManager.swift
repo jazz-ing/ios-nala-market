@@ -87,7 +87,7 @@ struct NetworkManager: NetworkManageable {
     }
 
     func request(to endPoint: EndPointType,
-                 with body: BodyParameterType,
+                 with body: Uploadable,
                  completion: @escaping SessionResult) {
         guard let url = endPoint.configureURL() else {
             completion(.failure(.invalidURL))

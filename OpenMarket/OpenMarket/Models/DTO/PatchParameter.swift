@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct PatchParameter: Encodable {
+struct PatchParameter: BodyParameterType {
     
     let name: String?
     let descriptions: String?
     let thumbnailId: Int?
-    let price: Int?
     let currency: String?
+    let price: Int?
     let discountedPrice: Int?
     let stock: Int?
     let password: String

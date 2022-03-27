@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PatchProduct: BodyParameterType {
+struct PatchProduct: Uploadable {
     
     let parameter: Data?
     let images: [Data]?

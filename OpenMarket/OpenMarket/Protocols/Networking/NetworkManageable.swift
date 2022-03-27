@@ -13,5 +13,5 @@ protocol NetworkManageable {
 
     func request(to urlString: String, completion: @escaping SessionResult) -> URLSessionDataTask?
     func request(to endPoint: EndPointType, completion: @escaping SessionResult)
-    func request(to endPoint: EndPointType, with body: BodyParameterType, completion: @escaping SessionResult)
+    func request(to endPoint: EndPointType, with body: Uploadable, completion: @escaping SessionResult)
 }

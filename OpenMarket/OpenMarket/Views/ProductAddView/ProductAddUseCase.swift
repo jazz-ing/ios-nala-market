@@ -9,7 +9,7 @@ import Foundation
 
 protocol ProductAddUseCaseProtocol {
 
-    func add(product: BodyParameterType, completion: @escaping (Result<Product, Error>) -> Void)
+    func add(product: Uploadable, completion: @escaping (Result<Product, Error>) -> Void)
 }
 
 final class ProductAddUseCase: ProductAddUseCaseProtocol {
@@ -23,7 +23,7 @@ final class ProductAddUseCase: ProductAddUseCaseProtocol {
         self.networkManager = networkManager
     }
     
-    func add(product: BodyParameterType, completion: @escaping (Result<Product, Error>) -> Void) {
+    func add(product: Uploadable, completion: @escaping (Result<Product, Error>) -> Void) {
         networkManager.request(to: MarketEndPoint.postProduct,
                                with: product) { result in
             switch result {

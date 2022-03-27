@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PostProductBody: BodyParameterType {
+struct PostProductBody: Uploadable {
     
     let parameter: Data
     let images: [Data]?

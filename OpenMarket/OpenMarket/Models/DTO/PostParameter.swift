@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct PostParameter: Codable {
+struct PostParameter: BodyParameterType {
     
     let name: String
     let descriptions: String
-    let price: Int
     let currency: String
-    let discountedPrice: Int = 0
-    let stock: Int = 0
+    let price: Int
+    let discountedPrice: Int
+    let stock: Int
     let password: String
 
     enum CodingKeys: String, CodingKey {
