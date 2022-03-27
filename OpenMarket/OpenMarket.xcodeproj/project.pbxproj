@@ -56,6 +56,7 @@
 		DFE72AEE27EDE34D0042F23A /* ProductAddUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE72AED27EDE34D0042F23A /* ProductAddUseCase.swift */; };
 		DFE72AF227EFDABD0042F23A /* BodyParameterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE72AF127EFDABD0042F23A /* BodyParameterType.swift */; };
 		DFE72AF427F0B1940042F23A /* EncodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE72AF327F0B1940042F23A /* EncodingManager.swift */; };
+		DFE72AF627F0B4B10042F23A /* ProductAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE72AF527F0B4B10042F23A /* ProductAddViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +124,7 @@
 		DFE72AED27EDE34D0042F23A /* ProductAddUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddUseCase.swift; sourceTree = "<group>"; };
 		DFE72AF127EFDABD0042F23A /* BodyParameterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyParameterType.swift; sourceTree = "<group>"; };
 		DFE72AF327F0B1940042F23A /* EncodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingManager.swift; sourceTree = "<group>"; };
+		DFE72AF527F0B4B10042F23A /* ProductAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -415,9 +417,18 @@
 		DFE72AEC27EDE3120042F23A /* ProductAddView */ = {
 			isa = PBXGroup;
 			children = (
-				DFE72AED27EDE34D0042F23A /* ProductAddUseCase.swift */,
+				DFE72AF727F0B4B80042F23A /* ViewModels */,
 			);
 			path = ProductAddView;
+			sourceTree = "<group>";
+		};
+		DFE72AF727F0B4B80042F23A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFE72AF527F0B4B10042F23A /* ProductAddViewModel.swift */,
+				DFE72AED27EDE34D0042F23A /* ProductAddUseCase.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -585,6 +596,7 @@
 				DF2B66B92797AE3200CF0085 /* NetworkManager.swift in Sources */,
 				DF317382277B375B0088FA6A /* ProductList.swift in Sources */,
 				DFE72AEE27EDE34D0042F23A /* ProductAddUseCase.swift in Sources */,
+				DFE72AF627F0B4B10042F23A /* ProductAddViewModel.swift in Sources */,
 				DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */,
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
 				DF30E9BC27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift in Sources */,
