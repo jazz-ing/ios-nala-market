@@ -25,11 +25,12 @@ enum ProductDetailUseCaseError: LocalizedError {
 
 final class ProductDetailUseCase: ProductDetailUseCaseProtocol {
 
-    private let parsingManager: ParsingManager
+    private let decodingManager: DecodingManager
     private let networkManager: NetworkManageable
     
-    init(parsingManager: ParsingManager = ParsingManager(), networkManager: NetworkManageable = NetworkManager()) {
-        self.parsingManager = parsingManager
+    init(decodingManager: DecodingManager = DecodingManager(),
+         networkManager: NetworkManageable = NetworkManager()) {
+        self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
     
@@ -37,15 +38,15 @@ final class ProductDetailUseCase: ProductDetailUseCaseProtocol {
         networkManager.request(to: MarketEndPoint.getProduct(id: id)) { [weak self] result in
             switch result {
             case .success(let data):
-                guard let parsedData = self?.parsingManager.parse(data, to: Product.self) else {
+                guard let decodedData = self?.decodingManager.decode(data, to: Product.self) else {
                     completion(.failure(ProductDetailUseCaseError.selfNotFound))
                     return
                 }
-                switch parsedData {
+                switch decodedData {
                 case .success(let product):
                     completion(.success(product))
-                case .failure(let parsingError):
-                    completion(.failure(parsingError))
+                case .failure(let decodingError):
+                    completion(.failure(decodingError))
                 }
             case .failure(let networkError):
                 completion(.failure(networkError))

@@ -24,15 +24,16 @@ enum MarketListUseCaseError: LocalizedError {
 
 final class MarketListUseCase: MarketListUseCaseProtocol {
     
-    private let parsingManager: ParsingManager
+    private let decodingManager: DecodingManager
     private let networkManager: NetworkManageable
     private(set) var isFetching = false
     private(set) var isLastPage = false
     private(set) var page = 1
     private let numberOfItems = 10
     
-    init(parsingManager: ParsingManager = ParsingManager(), networkManager: NetworkManageable = NetworkManager()) {
-        self.parsingManager = parsingManager
+    init(decodingManager: DecodingManager = DecodingManager(),
+         networkManager: NetworkManageable = NetworkManager()) {
+        self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
     
@@ -48,11 +49,11 @@ final class MarketListUseCase: MarketListUseCaseProtocol {
         ) { [weak self] result in
             switch result {
             case .success(let data):
-                guard let parsedData = self?.parsingManager.parse(data, to: ProductList.self) else {
+                guard let decodedData = self?.decodingManager.decode(data, to: ProductList.self) else {
                     completion(.failure(MarketListUseCaseError.selfNotFound))
                     return
                 }
-                switch parsedData {
+                switch decodedData {
                 case .success(let productList):
                     if self?.page == productList.lastPage {
                         self?.isLastPage = true
@@ -61,8 +62,8 @@ final class MarketListUseCase: MarketListUseCaseProtocol {
                     }
                     self?.page += 1
                     completion(.success(productList.products))
-                case .failure(let parsingError):
-                    completion(.failure(parsingError))
+                case .failure(let decodingError):
+                    completion(.failure(decodingError))
                 }
             case .failure(let networkError):
                 completion(.failure(networkError))

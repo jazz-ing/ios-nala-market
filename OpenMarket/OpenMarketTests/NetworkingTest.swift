@@ -10,20 +10,20 @@ import XCTest
 
 class NetworkingTests: XCTestCase {
 
-    var parsingManager: ParsingManager?
+    var decodingManager: DecodingManager?
     var networkManager: NetworkManager?
 
     override func setUpWithError() throws {
-        parsingManager = ParsingManager()
+        decodingManager = DecodingManager()
         networkManager = NetworkManager(session: MockURLSession())
     }
 
     override func tearDownWithError() throws {
-        parsingManager = nil
+        decodingManager = nil
         networkManager = nil
     }
 
-    func test_parse메소드호출시_json데이터파싱에성공하는지() {
+    func test_decode메소드호출시_json데이터파싱에성공하는지() {
         // given
         let jsonPath = Bundle(for: type(of: self)).path(forResource: "Product", ofType: "json")!
         guard let jsonData = try? String(contentsOfFile: jsonPath).data(using: .utf8) else {
@@ -33,7 +33,7 @@ class NetworkingTests: XCTestCase {
         var outputValue: String?
 
         // when
-        let decodedData = parsingManager!.parse(jsonData, to: Product.self)
+        let decodedData = decodingManager!.decode(jsonData, to: Product.self)
         switch decodedData {
         case .success(let product):
             outputValue = product.name
@@ -55,7 +55,7 @@ class NetworkingTests: XCTestCase {
                                 completion: { result in
             switch result {
             case .success(let data):
-                let decodedData = self.parsingManager!.parse(data, to: Product.self)
+                let decodedData = self.decodingManager!.decode(data, to: Product.self)
                 switch decodedData {
                 case .success(let product):
                     outputValue = product.name
@@ -81,7 +81,7 @@ class NetworkingTests: XCTestCase {
                                 completion: { result in
             switch result {
             case .success(let data):
-                let decodedData = self.parsingManager!.parse(data, to: ProductList.self)
+                let decodedData = self.decodingManager!.decode(data, to: ProductList.self)
                 switch decodedData {
                 case .success(let productList):
                     outputValue = productList.pageNumber
@@ -149,7 +149,7 @@ class NetworkingTests: XCTestCase {
         networkManager?.request(to: MarketEndPoint.getProduct(id: 521), completion: { result in
             switch result {
             case .success(let data):
-                let decodedData = self.parsingManager!.parse(data, to: Product.self)
+                let decodedData = self.decodingManager!.decode(data, to: Product.self)
                 switch decodedData {
                 case .success(let product):
                     outputValue = product.name
@@ -179,7 +179,7 @@ class NetworkingTests: XCTestCase {
                                 completion: { result in
             switch result {
             case .success(let data):
-                let decodedData = self.parsingManager!.parse(data, to: ProductList.self)
+                let decodedData = self.decodingManager!.decode(data, to: ProductList.self)
                 switch decodedData {
                 case .success(let productList):
                     outputValue = productList.pageNumber

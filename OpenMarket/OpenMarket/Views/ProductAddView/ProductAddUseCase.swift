@@ -14,12 +14,12 @@ protocol ProductAddUseCaseProtocol {
 
 final class ProductAddUseCase: ProductAddUseCaseProtocol {
     
-    private let parsingManager: ParsingManager
+    private let decodingManager: DecodingManager
     private let networkManager: NetworkManageable
     
-    init(parsingManager: ParsingManager = ParsingManager(),
+    init(decodingManager: DecodingManager = DecodingManager(),
          networkManager: NetworkManageable = NetworkManager()) {
-        self.parsingManager = parsingManager
+        self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
     
@@ -28,12 +28,12 @@ final class ProductAddUseCase: ProductAddUseCaseProtocol {
                                with: product) { result in
             switch result {
             case .success(let data):
-                let parsedData = self.parsingManager.parse(data, to: Product.self)
-                switch parsedData {
+                let decodedData = self.decodingManager.decode(data, to: Product.self)
+                switch decodedData {
                 case .success(let product):
                     completion(.success(product))
-                case .failure(let parsingError):
-                    completion(.failure(parsingError))
+                case .failure(let decodingError):
+                    completion(.failure(decodingError))
                 }
             case .failure(let networkError):
                 completion(.failure(networkError))
