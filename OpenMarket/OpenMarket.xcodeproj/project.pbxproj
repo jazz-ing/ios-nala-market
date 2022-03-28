@@ -45,6 +45,8 @@
 		DF9684EA279EDDC800E93D9C /* Uploadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684E9279EDDC800E93D9C /* Uploadable.swift */; };
 		DF9684EC279EE12200E93D9C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684EB279EE12200E93D9C /* PostParameter.swift */; };
 		DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF9684ED279EE13000E93D9C /* PatchParameter.swift */; };
+		DFA0F9C627F1B41700ECB853 /* PhotoAddCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA0F9C527F1B41700ECB853 /* PhotoAddCollectionViewCell.swift */; };
+		DFA0F9CA27F1B9E500ECB853 /* PhotoAddCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFA0F9C927F1B9E500ECB853 /* PhotoAddCellViewModel.swift */; };
 		DFC5807327AE29CB00CCC0E9 /* NetworkingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC5807227AE29CB00CCC0E9 /* NetworkingTest.swift */; };
 		DFC5807B27AE2A3700CCC0E9 /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC5807A27AE2A3700CCC0E9 /* MockURLSessionDataTask.swift */; };
 		DFC5807D27AE2BA400CCC0E9 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFC5807C27AE2BA400CCC0E9 /* URLSessionProtocol.swift */; };
@@ -112,6 +114,8 @@
 		DF9684E9279EDDC800E93D9C /* Uploadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Uploadable.swift; sourceTree = "<group>"; };
 		DF9684EB279EE12200E93D9C /* PostParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		DF9684ED279EE13000E93D9C /* PatchParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatchParameter.swift; sourceTree = "<group>"; };
+		DFA0F9C527F1B41700ECB853 /* PhotoAddCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAddCollectionViewCell.swift; sourceTree = "<group>"; };
+		DFA0F9C927F1B9E500ECB853 /* PhotoAddCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAddCellViewModel.swift; sourceTree = "<group>"; };
 		DFC5807027AE29CB00CCC0E9 /* OpenMarketNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenMarketNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFC5807227AE29CB00CCC0E9 /* NetworkingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTest.swift; sourceTree = "<group>"; };
 		DFC5807A27AE2A3700CCC0E9 /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
@@ -377,6 +381,23 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		DFA0F9C727F1B9BC00ECB853 /* PhotoAddCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DFA0F9C827F1B9CE00ECB853 /* ViewModel */,
+				DFA0F9C527F1B41700ECB853 /* PhotoAddCollectionViewCell.swift */,
+			);
+			path = PhotoAddCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		DFA0F9C827F1B9CE00ECB853 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DFA0F9C927F1B9E500ECB853 /* PhotoAddCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		DFC5807127AE29CB00CCC0E9 /* OpenMarketTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				DFE72AF727F0B4B80042F23A /* ViewModels */,
+				DFA0F9C727F1B9BC00ECB853 /* PhotoAddCollectionViewCell */,
 			);
 			path = ProductAddView;
 			sourceTree = "<group>";
@@ -599,6 +621,7 @@
 				DFE72AF627F0B4B10042F23A /* ProductAddViewModel.swift in Sources */,
 				DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */,
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
+				DFA0F9C627F1B41700ECB853 /* PhotoAddCollectionViewCell.swift in Sources */,
 				DF30E9BC27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift in Sources */,
 				DFE72AF427F0B1940042F23A /* EncodingManager.swift in Sources */,
 				DF5C406427D7718C00A7E2DF /* Cancellable.swift in Sources */,
@@ -614,6 +637,7 @@
 				DF9684EA279EDDC800E93D9C /* Uploadable.swift in Sources */,
 				DF5C405827D0E93400A7E2DF /* MarketListUseCaseProtocol.swift in Sources */,
 				DF31738A277C152E0088FA6A /* EndPointType.swift in Sources */,
+				DFA0F9CA27F1B9E500ECB853 /* PhotoAddCellViewModel.swift in Sources */,
 				DF2B66D1279982D000CF0085 /* PatchProduct.swift in Sources */,
 				DF2B66C82799651100CF0085 /* PostProduct.swift in Sources */,
 				DFE72AF227EFDABD0042F23A /* BodyParameterType.swift in Sources */,
