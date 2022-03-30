@@ -11,8 +11,8 @@ struct PostParameter: BodyParameterType {
     
     let name: String
     let descriptions: String
-    let currency: String
     let price: Int
+    let currency: String
     let discountedPrice: Int
     let stock: Int
     let password: String
