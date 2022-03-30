@@ -152,8 +152,10 @@ final class ProductAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupPickerView()
         setupNavigationBar()
         setConstraints()
+        setDelegates()
     }
 }
 
@@ -216,6 +218,11 @@ extension ProductAddViewController {
             descriptionTextView.bottomAnchor.constraint(equalTo: contentView.readableContentGuide.bottomAnchor)
         ])
     }
+    
+    func setDelegates() {
+        currencyPickerView.dataSource = self
+        currencyPickerView.delegate = self
+    }
 
     private func setupNavigationBar() {
         navigationItem.title = "상품 등록"
@@ -228,6 +235,68 @@ extension ProductAddViewController {
     
     @objc func registerButtonTapped() {
         viewModel?.addNewProduct()
+    }
+    
+    private func setupPickerView() {
+        currencyTextView.inputView = currencyPickerView
+    }
+    
+    private func setupToolbar() {
+        let toolBar = UIToolbar(frame: Style.CurrencyPickerView.toolBarFrame)
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor.black
+        toolBar.sizeToFit()
+        let doneButton = UIBarButtonItem(title: Style.CurrencyPickerView.doneButtonTitle,
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(self.donePicker))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                            target: nil,
+                                            action: nil)
+        let cancelButton = UIBarButtonItem(title: Style.CurrencyPickerView.cancelButtonTitle,
+                                           style: .plain,
+                                           target: self,
+                                           action: #selector(self.cancelPicker))
+        toolBar.setItems([cancelButton, flexibleSpace, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        currencyTextView.inputAccessoryView = toolBar
+    }
+
+    @objc func donePicker() {
+        let row = currencyPickerView.selectedRow(inComponent: Style.CurrencyPickerView.selectedIndex)
+        currencyPickerView.selectRow(row, inComponent: Style.CurrencyPickerView.selectedIndex,
+                                     animated: false)
+        currencyTextView.textColor = .black
+        currencyTextView.text = viewModel?.currencyPickerValues[row]
+        currencyTextView.resignFirstResponder()
+    }
+
+    @objc func cancelPicker() {
+        currencyTextView.text = Style.PlaceHolderText.currency
+        currencyTextView.textColor = .systemGray3
+        currencyTextView.resignFirstResponder()
+    }
+}
+
+// MARK: - CurrencyPickerView Datasource, Delegate
+
+extension ProductAddViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return Style.CurrencyPickerView.numberOfComponents
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return viewModel?.currencyPickerValues.count ?? .zero
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return viewModel?.currencyPickerValues[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.currencyTextView.text = viewModel?.currencyPickerValues[row]
+        viewModel?.fillProductCurrency(viewModel?.currencyPickerValues[row])
     }
 }
 
@@ -251,6 +320,14 @@ extension ProductAddViewController {
         enum TextView {
             static let cornerRadius: CGFloat = 10
             static let borderWidth: CGFloat = 1
+        }
+        
+        enum CurrencyPickerView {
+            static let numberOfComponents: Int = 1
+            static let selectedIndex: Int = 0
+            static let toolBarFrame: CGRect = CGRect(x: 0, y: 0, width: 375, height: 30)
+            static let doneButtonTitle: String = "완료"
+            static let cancelButtonTitle: String = "취소"
         }
 
         enum PlaceHolderText {

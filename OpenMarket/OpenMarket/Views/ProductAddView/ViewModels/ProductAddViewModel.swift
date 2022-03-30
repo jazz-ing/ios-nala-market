@@ -26,6 +26,7 @@ final class ProductAddViewModel {
     private(set) var discountedPrice: String?
     private(set) var stock: String?
     private(set) var password: String?
+    private(set) var currencyPickerValues: [String] = ["KRW", "USD"]
     private(set) var images: [UIImage] = [] {
         didSet {
             switch images.count {
