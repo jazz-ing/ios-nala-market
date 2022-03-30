@@ -15,6 +15,9 @@ final class PhotoAddCollectionViewCell: UICollectionViewCell {
     
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "camera.viewfinder")
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor.systemGray3.cgColor
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
