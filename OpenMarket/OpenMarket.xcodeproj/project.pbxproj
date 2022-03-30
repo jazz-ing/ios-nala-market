@@ -13,6 +13,7 @@
 		C70FB0FF25BEF61C00C9924E /* MarketMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70FB0FE25BEF61C00C9924E /* MarketMainViewController.swift */; };
 		C70FB10425BEF61D00C9924E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C70FB10325BEF61D00C9924E /* Assets.xcassets */; };
 		C70FB10725BEF61D00C9924E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C70FB10525BEF61D00C9924E /* LaunchScreen.storyboard */; };
+		DF06A4EA27F4987A00D8BF10 /* ProductAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF06A4E927F4987A00D8BF10 /* ProductAddViewController.swift */; };
 		DF2B66B92797AE3200CF0085 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B66B82797AE3200CF0085 /* NetworkManager.swift */; };
 		DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B66BC2798044E00CF0085 /* MarketEndPoint.swift */; };
 		DF2B66C327990B1700CF0085 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2B66C227990B1700CF0085 /* MultipartFormData.swift */; };
@@ -82,6 +83,7 @@
 		C70FB10325BEF61D00C9924E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C70FB10625BEF61D00C9924E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C70FB10825BEF61D00C9924E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF06A4E927F4987A00D8BF10 /* ProductAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductAddViewController.swift; sourceTree = "<group>"; };
 		DF2B66B82797AE3200CF0085 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DF2B66BC2798044E00CF0085 /* MarketEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketEndPoint.swift; sourceTree = "<group>"; };
 		DF2B66C227990B1700CF0085 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
@@ -438,6 +440,7 @@
 		DFE72AEC27EDE3120042F23A /* ProductAddView */ = {
 			isa = PBXGroup;
 			children = (
+				DF06A4E927F4987A00D8BF10 /* ProductAddViewController.swift */,
 				DFE72AF727F0B4B80042F23A /* ViewModels */,
 				DFA0F9C727F1B9BC00ECB853 /* PhotoAddCollectionViewCell */,
 			);
@@ -620,6 +623,7 @@
 				DFE72AEE27EDE34D0042F23A /* ProductAddUseCase.swift in Sources */,
 				DFE72AF627F0B4B10042F23A /* ProductAddViewModel.swift in Sources */,
 				DF9684EE279EE13000E93D9C /* PatchParameter.swift in Sources */,
+				DF06A4EA27F4987A00D8BF10 /* ProductAddViewController.swift in Sources */,
 				DF2B66BD2798044E00CF0085 /* MarketEndPoint.swift in Sources */,
 				DFA0F9C627F1B41700ECB853 /* PhotoAddCollectionViewCell.swift in Sources */,
 				DF30E9BC27E2E43B00781392 /* ProductDetailUseCaseProtocol.swift in Sources */,
