@@ -38,6 +38,22 @@ final class ProductAddViewController: UIViewController {
         return collectionView
     }()
 
+    @available(iOS 14, *)
+    private lazy var multipleImagePicker: PHPickerViewController = {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 10
+        configuration.filter = .images
+        let picker = PHPickerViewController(configuration: configuration)
+        return picker
+    }()
+    
+    private lazy var imagePicker: UIImagePickerController = {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        return picker
+    }()
+
     private let nameTextView: UITextView = {
         let textView = UITextView()
         textView.font = UIFont.preferredFont(forTextStyle: .body)
@@ -222,6 +238,12 @@ extension ProductAddViewController {
     
     func setDelegates() {
         photoCollectionView.dataSource = self
+        photoCollectionView.delegate = self
+        if #available(iOS 14, *) {
+            multipleImagePicker.delegate = self
+        } else {
+            imagePicker.delegate = self
+        }
         currencyPickerView.dataSource = self
         currencyPickerView.delegate = self
     }
@@ -306,6 +328,61 @@ extension ProductAddViewController: UICollectionViewDataSource {
             
             return cell
         }
+    }
+}
+
+// MARK: - PhotoCollectionView Delegate
+
+extension ProductAddViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if #available(iOS 14, *) {
+            self.present(multipleImagePicker, animated: true, completion: nil)
+        } else {
+            self.present(self.imagePicker, animated: true)
+        }
+    }
+}
+
+// MARK: - MultipleImagePicker Delegate
+
+extension ProductAddViewController: PHPickerViewControllerDelegate {
+    
+    @available(iOS 14, *)
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        results.forEach { result in
+            let itemProvider = result.itemProvider
+            
+            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+                    guard let image = image as? UIImage else { return }
+                    DispatchQueue.main.async {
+                        self?.viewModel?.append(image: image)
+                    }
+                }
+            }
+        }
+    }
+}
+
+// MARK: - ImagePicker Delegate
+
+extension ProductAddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var newImage: UIImage? = nil
+        
+        if let possibleImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            newImage = possibleImage
+        } else if let possibleImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            newImage = possibleImage
+        }
+        
+        DispatchQueue.main.async {
+            self.viewModel?.append(image: newImage ?? UIImage())
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
 }
 
