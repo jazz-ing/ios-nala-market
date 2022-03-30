@@ -73,7 +73,9 @@ final class MultipartFormData {
     private func contentHeaders(withName name: String, fileName: String? = nil, mimeType: String? = nil) -> Data {
         var disposition = "form-data; name=\"\(name)\""
         if let fileName = fileName {
-            disposition += "; fileName=\"\(fileName)\"" + EncodingCharacter.crlf
+            disposition += "; filename=\"\(fileName)\"" + EncodingCharacter.crlf
+        } else {
+            disposition += EncodingCharacter.crlf + EncodingCharacter.crlf
         }
 
         var headers = "Content-Disposition: \(disposition)"
