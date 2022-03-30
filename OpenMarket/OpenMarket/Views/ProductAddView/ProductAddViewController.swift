@@ -448,6 +448,15 @@ extension ProductAddViewController: UITextViewDelegate {
             textView.textColor = .black
         }
     }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        viewModel?.fillProduct(name: nameTextView.text,
+                               descriptions: descriptionTextView.text,
+                               price: priceTextView.text,
+                               discountedPrice: discountedTextView.text,
+                               stock: stockTextView.text,
+                               password: passwordTextView.text)
+    }
 }
 
 // MARK: - NameSpace
