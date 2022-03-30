@@ -41,7 +41,7 @@ final class ProductAddViewController: UIViewController {
     @available(iOS 14, *)
     private lazy var multipleImagePicker: PHPickerViewController = {
         var configuration = PHPickerConfiguration()
-        configuration.selectionLimit = 10
+        configuration.selectionLimit = Style.ImagePicker.imageSelectLimit
         configuration.filter = .images
         let picker = PHPickerViewController(configuration: configuration)
         return picker
@@ -171,8 +171,9 @@ final class ProductAddViewController: UIViewController {
         setupViews()
         setupPickerView()
         setupNavigationBar()
-        setConstraints()
+        setupToolbar()
         setDelegates()
+        setConstraints()
     }
 }
 
@@ -278,8 +279,8 @@ extension ProductAddViewController {
     }
 
     private func setupNavigationBar() {
-        navigationItem.title = "상품 등록"
-        let registerButton = UIBarButtonItem(title: "완료",
+        navigationItem.title = Style.NavigationBar.title
+        let registerButton = UIBarButtonItem(title: Style.NavigationBar.doneButtonTitle,
                                              style: .plain,
                                              target: self,
                                              action: #selector(registerButtonTapped))
@@ -337,7 +338,7 @@ extension ProductAddViewController {
 extension ProductAddViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let numberOfImages = viewModel?.images.count else { return .zero}
-        return numberOfImages + 1
+        return numberOfImages + Style.PhotoCollectionView.indexOffset
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -350,7 +351,7 @@ extension ProductAddViewController: UICollectionViewDataSource {
         case .zero:
             return cell
         default:
-            guard let photoImage = viewModel?.images[indexPath.item - 1] else { return UICollectionViewCell() }
+            guard let photoImage = viewModel?.images[indexPath.item - Style.PhotoCollectionView.indexOffset] else { return UICollectionViewCell() }
             let photoCellViewModel = PhotoAddCellViewModel()
             cell.bind(with: photoCellViewModel)
             cell.setImage(photoImage)
@@ -444,7 +445,7 @@ extension ProductAddViewController: UITextViewDelegate {
         if textView == currencyTextView {
             textView.textColor = .black
         } else if textView.textColor == .systemGray3 {
-            textView.text = ""
+            textView.text = Style.TextView.emptyText
             textView.textColor = .black
         }
     }
@@ -467,6 +468,11 @@ extension ProductAddViewController {
 
         static let spacing: CGFloat = 10
 
+        enum NavigationBar {
+            static let title: String = "상품 등록"
+            static let doneButtonTitle: String = "완료"
+        }
+
         enum PhotoCollectionView {
             static let imageSectionInsets: UIEdgeInsets = UIEdgeInsets(top: 20,
                                                                        left: 10,
@@ -474,9 +480,15 @@ extension ProductAddViewController {
                                                                        right: 10)
             static let imageItemSize: CGSize = CGSize(width: 80, height: 80)
             static let heightRatio: CGFloat = 0.3
+            static let indexOffset: Int = 1
+        }
+        
+        enum ImagePicker {
+            static let imageSelectLimit: Int = 5
         }
 
         enum TextView {
+            static let emptyText: String = ""
             static let cornerRadius: CGFloat = 10
             static let borderWidth: CGFloat = 1
         }
@@ -490,13 +502,13 @@ extension ProductAddViewController {
         }
 
         enum PlaceHolderText {
-            static let name = "글 제목"
-            static let stock = "재고"
-            static let currency = "통화"
-            static let price = "가격"
-            static let discountedPrice = "할인 가격"
-            static let password = "비밀번호"
-            static let description = "상품 정보를 입력해주세요."
+            static let name: String = "글 제목"
+            static let stock: String = "재고"
+            static let currency: String = "통화"
+            static let price: String = "가격"
+            static let discountedPrice: String = "할인 가격"
+            static let password: String = "비밀번호"
+            static let description: String = "상품 정보를 입력해주세요."
         }
     }
 }
