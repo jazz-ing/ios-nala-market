@@ -115,6 +115,10 @@ extension MarketMainViewController {
     }
 
     @objc private func addProductButtonTapped() {
+        let productAddViewModel = ProductAddViewModel()
+        let productAddViewController = ProductAddViewController()
+        productAddViewController.bind(with: productAddViewModel)
+        navigationController?.pushViewController(productAddViewController, animated: true)
     }
 }
 
