@@ -269,6 +269,12 @@ extension ProductAddViewController {
         }
         currencyPickerView.dataSource = self
         currencyPickerView.delegate = self
+        nameTextView.delegate = self
+        stockTextView.delegate = self
+        priceTextView.delegate = self
+        discountedTextView.delegate = self
+        passwordTextView.delegate = self
+        descriptionTextView.delegate = self
     }
 
     private func setupNavigationBar() {
@@ -427,6 +433,20 @@ extension ProductAddViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         self.currencyTextView.text = viewModel?.currencyPickerValues[row]
         viewModel?.fillProductCurrency(viewModel?.currencyPickerValues[row])
+    }
+}
+
+// MARK: - TextView Delegate
+
+extension ProductAddViewController: UITextViewDelegate {
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView == currencyTextView {
+            textView.textColor = .black
+        } else if textView.textColor == .systemGray3 {
+            textView.text = ""
+            textView.textColor = .black
+        }
     }
 }
 
