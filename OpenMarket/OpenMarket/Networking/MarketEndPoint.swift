@@ -38,7 +38,7 @@ enum MarketEndPoint: EndPointType {
                 "items_per_page": numberOfItems
             ]
         default:
-            return [:]
+            return nil
         }
     }
 
@@ -61,7 +61,7 @@ enum MarketEndPoint: EndPointType {
             return nil
         case .postProduct, .patchProduct, .deleteProduct:
             return [
-                "identifier": "3424eb5f-660f-11ec-8eff-b53506094baa"
+                "identifier": "cd706a3e-66db-11ec-9626-796401f2341a"
             ]
         }
     }
