@@ -176,6 +176,29 @@ final class ProductAddViewController: UIViewController {
     }
 }
 
+// MARK: - Binding Method
+
+extension ProductAddViewController {
+    
+    func bind(with viewModel: ProductAddViewModel) {
+        self.viewModel = viewModel
+        
+        viewModel.state.bind { [weak self] state in
+            switch state {
+            case .appendImage(let index):
+                let indexPath = IndexPath(item: index, section: .zero)
+                self?.photoCollectionView.insertItems(at: [indexPath])
+            case .add(let product):
+                DispatchQueue.main.async {
+                    self?.navigationController?.popViewController(animated: false)
+                }
+            default:
+                break
+            }
+        }
+    }
+}
+
 // MARK: - View Configuring Method
 
 extension ProductAddViewController {
