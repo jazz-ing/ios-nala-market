@@ -152,6 +152,7 @@ final class ProductAddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        setupNavigationBar()
         setConstraints()
     }
 }
@@ -214,6 +215,19 @@ extension ProductAddViewController {
             descriptionTextView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
             descriptionTextView.bottomAnchor.constraint(equalTo: contentView.readableContentGuide.bottomAnchor)
         ])
+    }
+
+    private func setupNavigationBar() {
+        navigationItem.title = "상품 등록"
+        let registerButton = UIBarButtonItem(title: "완료",
+                                             style: .plain,
+                                             target: self,
+                                             action: #selector(registerButtonTapped))
+        navigationItem.rightBarButtonItem = registerButton
+    }
+    
+    @objc func registerButtonTapped() {
+        viewModel?.addNewProduct()
     }
 }
 
