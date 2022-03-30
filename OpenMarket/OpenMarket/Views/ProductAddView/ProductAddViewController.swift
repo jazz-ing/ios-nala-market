@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 final class ProductAddViewController: UIViewController {
 
@@ -220,6 +221,7 @@ extension ProductAddViewController {
     }
     
     func setDelegates() {
+        photoCollectionView.dataSource = self
         currencyPickerView.dataSource = self
         currencyPickerView.delegate = self
     }
@@ -276,6 +278,34 @@ extension ProductAddViewController {
         currencyTextView.text = Style.PlaceHolderText.currency
         currencyTextView.textColor = .systemGray3
         currencyTextView.resignFirstResponder()
+    }
+}
+
+// MARK: - PhotoCollectionView Datasource
+
+extension ProductAddViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let numberOfImages = viewModel?.images.count else { return .zero}
+        return numberOfImages + 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: PhotoAddCollectionViewCell.identifier,
+            for: indexPath
+        ) as? PhotoAddCollectionViewCell else { return UICollectionViewCell() }
+        
+        switch indexPath.item {
+        case .zero:
+            return cell
+        default:
+            guard let photoImage = viewModel?.images[indexPath.item - 1] else { return UICollectionViewCell() }
+            let photoCellViewModel = PhotoAddCellViewModel()
+            cell.bind(with: photoCellViewModel)
+            cell.setImage(photoImage)
+            
+            return cell
+        }
     }
 }
 
