@@ -11,7 +11,7 @@ final class ProductAddViewModel {
     
     enum State {
         case empty
-        case appendImage(indexPath: Int)
+        case appendImage(index: Int)
         case add(Product)
         case error(Error)
     }
@@ -30,24 +30,23 @@ final class ProductAddViewModel {
         didSet {
             switch images.count {
             case oldValue.count...:
-                state.value = .appendImage(indexPath: images.count - 1)
+                state.value = .appendImage(index: images.count)
             default:
                 break
             }
         }
     }
-    private(set) var product: Product {
+    private(set) var product: Product? {
         didSet {
+            guard let product = product else { return }
             state.value = .add(product)
         }
     }
 
     init(encodingManager: EncodingManager = EncodingManager(),
-         useCase: ProductAddUseCaseProtocol = ProductAddUseCase(),
-         product: Product) {
+         useCase: ProductAddUseCaseProtocol = ProductAddUseCase()) {
         self.encodingManager = encodingManager
         self.useCase = useCase
-        self.product = product
     }
 
     func addNewProduct() {
@@ -86,20 +85,20 @@ final class ProductAddViewModel {
     }
 
     private func createNewProduct() -> Uploadable? {
-        let images = images.compactMap { $0.pngData() }
+        let images = images.compactMap { $0.jpegData(compressionQuality: 1) }
 
         guard let name = name,
               let descriptions = descriptions,
-              let currency = currency,
               let price = price,
+              let currency = currency,
               let discountedPrice = discountedPrice,
               let stock = stock,
               let password = password else { return nil }
 
         let newProductParameter = PostParameter(name: name,
                                                 descriptions: descriptions,
-                                                currency: currency,
                                                 price: Int(price) ?? .zero,
+                                                currency: currency,
                                                 discountedPrice: Int(discountedPrice) ?? .zero,
                                                 stock: Int(stock) ?? .zero,
                                                 password: password)
