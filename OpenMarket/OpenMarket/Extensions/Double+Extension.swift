@@ -1,5 +1,5 @@
 //
-//  Int+Extension.swift
+//  Double+Extension.swift
 //  OpenMarket
 //
 //  Created by 이윤주 on 2022/03/11.
@@ -16,7 +16,7 @@ extension NumberFormatter {
     }()
 }
 
-extension Int {
+extension Double {
 
     func priceFormatted() -> String {
         return NumberFormatter.priceFormatter.string(from: NSNumber(value: self)) ?? ""
