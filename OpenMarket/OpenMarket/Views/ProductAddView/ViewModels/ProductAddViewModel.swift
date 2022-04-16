@@ -51,7 +51,6 @@ final class ProductAddViewModel {
     }
 
     func addNewProduct() {
-        guard let newProduct = createNewProduct() else { return }
         useCase.add(product: newProduct) { [weak self] result in
             switch result {
             case .success(let product):
@@ -85,7 +84,7 @@ final class ProductAddViewModel {
         self.currency = currency
     }
 
-    private func createNewProduct() -> Uploadable? {
+    func createNewProduct() -> Uploadable? {
         let images = images.compactMap { $0.jpegData(compressionQuality: 1) }
 
         guard let name = name,

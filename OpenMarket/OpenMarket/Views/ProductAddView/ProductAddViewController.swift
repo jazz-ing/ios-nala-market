@@ -200,6 +200,7 @@ extension ProductAddViewController {
             case .add(let product):
                 DispatchQueue.main.async {
                     self?.activityIndicator.stopAnimating()
+                    self?.showAlert(Style.Alert.productAddSucceedAlertTitle)
                     self?.navigationController?.popViewController(animated: false)
                 }
             default:
@@ -299,6 +300,10 @@ extension ProductAddViewController {
     
     @objc func registerButtonTapped() {
         activityIndicator.startAnimating()
+        guard let newProduct = viewModel?.createNewProduct() else {
+            showAlert(Style.Alert.requiredContentsNotFilledAlertTitle)
+            return
+        }
         viewModel?.addNewProduct()
     }
     
@@ -520,6 +525,11 @@ extension ProductAddViewController {
             static let discountedPrice: String = "할인 가격"
             static let password: String = "비밀번호"
             static let description: String = "상품 정보를 입력해주세요."
+        }
+
+        enum Alert {
+            static let productAddSucceedAlertTitle: String = "상품 등록이 완료됐습니다."
+            static let requiredContentsNotFilledAlertTitle = "필수항목을 모두 작성해주세요."
         }
     }
 }
