@@ -166,6 +166,14 @@ final class ProductAddViewController: UIViewController {
         return textView
     }()
 
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = .large
+        return activityIndicator
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -191,6 +199,7 @@ extension ProductAddViewController {
                 self?.photoCollectionView.insertItems(at: [indexPath])
             case .add(let product):
                 DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
                     self?.navigationController?.popViewController(animated: false)
                 }
             default:
@@ -207,6 +216,7 @@ extension ProductAddViewController {
     private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(contentScrollView)
+        view.addSubview(activityIndicator)
         contentScrollView.addSubview(contentView)
         contentView.addSubview(photoCollectionView)
         contentView.addSubview(nameTextView)
@@ -288,6 +298,7 @@ extension ProductAddViewController {
     }
     
     @objc func registerButtonTapped() {
+        activityIndicator.startAnimating()
         viewModel?.addNewProduct()
     }
     
