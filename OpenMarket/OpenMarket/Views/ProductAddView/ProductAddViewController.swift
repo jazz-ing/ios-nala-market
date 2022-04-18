@@ -344,11 +344,13 @@ extension ProductAddViewController {
     }
 
     @objc func donePicker() {
-        let row = currencyPickerView.selectedRow(inComponent: Style.CurrencyPickerView.selectedIndex)
-        currencyPickerView.selectRow(row, inComponent: Style.CurrencyPickerView.selectedIndex,
+        let row = currencyPickerView.selectedRow(inComponent: Style.CurrencyPickerView.firstWheelIndex)
+        currencyPickerView.selectRow(row,
+                                     inComponent: Style.CurrencyPickerView.firstWheelIndex,
                                      animated: false)
         currencyTextView.textColor = .black
         currencyTextView.text = viewModel?.currencyPickerValues[row]
+        viewModel?.fillProductCurrency(viewModel?.currencyPickerValues[row])
         currencyTextView.resignFirstResponder()
     }
 
@@ -456,11 +458,6 @@ extension ProductAddViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return viewModel?.currencyPickerValues[row]
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.currencyTextView.text = viewModel?.currencyPickerValues[row]
-        viewModel?.fillProductCurrency(viewModel?.currencyPickerValues[row])
-    }
 }
 
 // MARK: - TextView Delegate
@@ -521,7 +518,7 @@ extension ProductAddViewController {
         
         enum CurrencyPickerView {
             static let numberOfComponents: Int = 1
-            static let selectedIndex: Int = 0
+            static let firstWheelIndex: Int = 0
             static let toolBarFrame: CGRect = CGRect(x: 0, y: 0, width: 375, height: 30)
             static let doneButtonTitle: String = "완료"
             static let cancelButtonTitle: String = "취소"
