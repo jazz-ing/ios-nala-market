@@ -16,7 +16,6 @@ final class PhotoAddCollectionViewCell: UICollectionViewCell {
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "camera.viewfinder")
-        imageView.image?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .systemOrange
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor.systemGray3.cgColor

@@ -51,7 +51,8 @@ final class ProductAddViewModel {
     }
 
     func addNewProduct() {
-        useCase.add(product: newProduct) { [weak self] result in
+        guard let product = createNewProduct() else { return }
+        useCase.add(product: product) { [weak self] result in
             switch result {
             case .success(let product):
                 self?.product = product

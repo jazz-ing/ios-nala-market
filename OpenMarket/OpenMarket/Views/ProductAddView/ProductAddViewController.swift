@@ -299,11 +299,11 @@ extension ProductAddViewController {
     }
     
     @objc func registerButtonTapped() {
-        activityIndicator.startAnimating()
         guard let newProduct = viewModel?.createNewProduct() else {
             showAlert(Style.Alert.requiredContentsNotFilledAlertTitle)
             return
         }
+        activityIndicator.startAnimating()
         viewModel?.addNewProduct()
     }
     
