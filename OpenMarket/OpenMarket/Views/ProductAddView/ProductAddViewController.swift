@@ -299,7 +299,8 @@ extension ProductAddViewController {
     }
     
     @objc func registerButtonTapped() {
-        guard let newProduct = viewModel?.createNewProduct() else {
+        resignAllTextViewFirstResponder()
+        guard viewModel?.createNewProduct() != nil else {
             showAlert(Style.Alert.requiredContentsNotFilledAlertTitle)
             return
         }
@@ -307,6 +308,15 @@ extension ProductAddViewController {
         viewModel?.addNewProduct()
     }
     
+    func resignAllTextViewFirstResponder() {
+        nameTextView.resignFirstResponder()
+        stockTextView.resignFirstResponder()
+        priceTextView.resignFirstResponder()
+        discountedTextView.resignFirstResponder()
+        passwordTextView.resignFirstResponder()
+        descriptionTextView.resignFirstResponder()
+    }
+
     private func setupPickerView() {
         currencyTextView.inputView = currencyPickerView
     }
