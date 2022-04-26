@@ -8,6 +8,7 @@
 import Foundation
 
 enum NetworkError: LocalizedError {
+
     case invalidURL
     case requestFail(Error)
     case invalidResponse
@@ -40,15 +41,20 @@ struct NetworkManager: NetworkManageable {
 
     // MARK: Initializer
 
-    init(session: URLSessionProtocol = URLSession.shared, multipartFormData: MultipartFormData = .init()) {
+    init(
+        session: URLSessionProtocol = URLSession.shared,
+        multipartFormData: MultipartFormData = .init()
+    ) {
         self.session = session
         self.multipartFormData = multipartFormData
     }
 
     // MARK: Networking methods
 
-    private func dataTask(with request: URLRequest,
-                          completion: @escaping SessionResult) -> URLSessionDataTask {
+    private func dataTask(
+        with request: URLRequest,
+        completion: @escaping SessionResult
+    ) -> URLSessionDataTask {
         let task = session.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(.requestFail(error)))
@@ -70,8 +76,10 @@ struct NetworkManager: NetworkManageable {
         return task
     }
     
-    func request(to urlString: String,
-                 completion: @escaping SessionResult) -> URLSessionDataTask? {
+    func request(
+        to urlString: String,
+        completion: @escaping SessionResult
+    ) -> URLSessionDataTask? {
         guard let url = URL(string: urlString) else {
             completion(.failure(.invalidURL))
             return nil
@@ -81,8 +89,10 @@ struct NetworkManager: NetworkManageable {
         return dataTask(with: request, completion: completion)
     }
     
-    func request(to endPoint: EndPointType,
-                 completion: @escaping SessionResult) {
+    func request(
+        to endPoint: EndPointType,
+        completion: @escaping SessionResult
+    ) {
         guard let url = endPoint.configureURL() else {
             completion(.failure(.invalidURL))
             return
@@ -92,19 +102,23 @@ struct NetworkManager: NetworkManageable {
         dataTask(with: request, completion: completion).resume()
     }
 
-    func request(to endPoint: EndPointType,
-                 with body: Uploadable,
-                 completion: @escaping SessionResult) {
+    func request(
+        to endPoint: EndPointType,
+        with body: Uploadable,
+        completion: @escaping SessionResult
+    ) {
         guard let url = endPoint.configureURL() else {
             completion(.failure(.invalidURL))
             return
         }
 
         let encoded = multipartFormData.encode(body)
-        let request = URLRequest(url: url,
-                                 endPoint: endPoint,
-                                 contentType: multipartFormData.contentType,
-                                 httpBody: encoded)
+        let request = URLRequest(
+            url: url,
+            endPoint: endPoint,
+            contentType: multipartFormData.contentType,
+            httpBody: encoded
+        )
         dataTask(with: request, completion: completion).resume()
     }
 }

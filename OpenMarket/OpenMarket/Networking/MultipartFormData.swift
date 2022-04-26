@@ -76,7 +76,11 @@ final class MultipartFormData {
         }
     }
 
-    private func contentHeaders(withName name: String, fileName: String? = nil, mimeType: String? = nil) -> Data {
+    private func contentHeaders(
+        withName name: String,
+        fileName: String? = nil,
+        mimeType: String? = nil
+    ) -> Data {
         var disposition = "form-data; name=\"\(name)\""
         if let fileName = fileName {
             disposition += "; filename=\"\(fileName)\"" + EncodingCharacter.crlf
@@ -86,7 +90,11 @@ final class MultipartFormData {
 
         var headers = "Content-Disposition: \(disposition)"
         if let mimeType = mimeType {
-            headers.append("Content-Type: \(mimeType)" + EncodingCharacter.crlf + EncodingCharacter.crlf)
+            headers.append(
+                "Content-Type: \(mimeType)"
+                + EncodingCharacter.crlf
+                + EncodingCharacter.crlf
+            )
         }
 
         return Data(headers.utf8)

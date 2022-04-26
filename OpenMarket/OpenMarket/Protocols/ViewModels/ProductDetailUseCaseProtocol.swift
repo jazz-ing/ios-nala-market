@@ -10,6 +10,12 @@ import UIKit.UIImage
 
 protocol ProductDetailUseCaseProtocol: AnyObject {
 
-    func fetchProductDetail(of id: Int, completion: @escaping (Result<Product, Error>) -> Void)
-    func fetchImage(from urlString: String, completion: @escaping (Result<UIImage, Error>) -> Void) -> Cancellable?
+    func fetchProductDetail(
+        of id: Int,
+        completion: @escaping (Result<Product, Error>) -> Void
+    )
+    func fetchImage(
+        from urlString: String,
+        completion: @escaping (Result<UIImage, Error>) -> Void
+    ) -> Cancellable?
 }

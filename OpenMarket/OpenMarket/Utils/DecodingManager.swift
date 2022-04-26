@@ -26,7 +26,10 @@ struct DecodingManager {
 
     private let decoder = JSONDecoder()
 
-    func decode<Model: Decodable>(_ data: Data, to model: Model.Type) -> Result<Model, CodableError> {
+    func decode<Model: Decodable>(
+        _ data: Data,
+        to model: Model.Type
+    ) -> Result<Model, CodableError> {
         guard let decodedData = try? decoder.decode(model, from: data) else {
             return .failure(.decodingFail)
         }

@@ -24,10 +24,14 @@ final class MarketMainViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
-        collectionView.register(MarketGridCollectionViewCell.self,
-                                forCellWithReuseIdentifier: MarketGridCollectionViewCell.identifier)
-        collectionView.register(MarketListCollectionViewCell.self,
-                                forCellWithReuseIdentifier: MarketListCollectionViewCell.identifier)
+        collectionView.register(
+            MarketGridCollectionViewCell.self,
+            forCellWithReuseIdentifier: MarketGridCollectionViewCell.identifier
+        )
+        collectionView.register(
+            MarketListCollectionViewCell.self,
+            forCellWithReuseIdentifier: MarketListCollectionViewCell.identifier
+        )
         collectionView.accessibilityIdentifier = Style.AccessibilityIdentifier.collectionView
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -96,13 +100,17 @@ extension MarketMainViewController {
         navigationController?.navigationBar.shadowImage = UIImage()
 
         navigationItem.title = Style.navigationTitle
-        let changingCellTypeButton = UIBarButtonItem(image: Style.ChangingCellTypeBarButton.listImage,
-                                                     style: .plain,
-                                                     target: self,
-                                                     action: #selector(changingCellTypeButtonTapped))
-        let addProductButton = UIBarButtonItem(barButtonSystemItem: .add,
-                                               target: self,
-                                               action: #selector(addProductButtonTapped))
+        let changingCellTypeButton = UIBarButtonItem(
+            image: Style.ChangingCellTypeBarButton.listImage,
+            style: .plain,
+            target: self,
+            action: #selector(changingCellTypeButtonTapped)
+        )
+        let addProductButton = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addProductButtonTapped)
+        )
         navigationItem.rightBarButtonItems = [addProductButton, changingCellTypeButton]
     }
 
@@ -152,26 +160,33 @@ extension MarketMainViewController {
 
 extension MarketMainViewController: UICollectionViewDataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int
+    ) -> Int {
         return viewModel.products.count
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         let cell: MarketCellType
-        
+
         switch cellType {
         case .grid:
             guard let gridCell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MarketGridCollectionViewCell.identifier,
                 for: indexPath
-            ) as? MarketGridCollectionViewCell else { return MarketGridCollectionViewCell() }
+            ) as? MarketGridCollectionViewCell
+            else { return MarketGridCollectionViewCell() }
             cell = gridCell
         case .list:
             guard let listCell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: MarketListCollectionViewCell.identifier,
                 for: indexPath
-            ) as? MarketListCollectionViewCell else { return MarketListCollectionViewCell() }
+            ) as? MarketListCollectionViewCell
+            else { return MarketListCollectionViewCell() }
             cell = listCell
         }
 
@@ -189,7 +204,10 @@ extension MarketMainViewController: UICollectionViewDataSource {
 
 extension MarketMainViewController: UICollectionViewDelegate {
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
         let product = viewModel.products[indexPath.item]
         let productDetailVC = ProductDetailViewController()
         let productDetailViewModel = ProductDetailViewModel(product: product)
@@ -203,9 +221,11 @@ extension MarketMainViewController: UICollectionViewDelegate {
 
 extension MarketMainViewController: UICollectionViewDelegateFlowLayout {
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
         switch cellType {
         case .grid:
             let paddingSpace = Style.Cell.gridSectionInsets.left * (Style.Cell.gridItemsPerRow + 1)
@@ -219,15 +239,19 @@ extension MarketMainViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
         return Style.Cell.gridSectionInsets
     }
 
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
         return Style.Cell.gridSectionInsets.left
     }
 }
@@ -237,7 +261,7 @@ extension MarketMainViewController: UICollectionViewDelegateFlowLayout {
 extension MarketMainViewController {
 
     private enum Style {
-        
+
         static let navigationTitle: String = "날라 마켓"
 
         enum Cell {
@@ -247,7 +271,7 @@ extension MarketMainViewController {
             static let gridSectionInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
             static let listItemPerHeight: CGFloat = 5
         }
-        
+
         enum ChangingCellTypeBarButton {
             static let gridImage = UIImage(systemName: "square.grid.2x2")
             static let listImage = UIImage(systemName: "list.dash")

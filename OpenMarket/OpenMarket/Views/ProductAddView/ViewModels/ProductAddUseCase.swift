@@ -21,8 +21,10 @@ final class ProductAddUseCase: ProductAddUseCaseProtocol {
 
     // MARK: Initializer
 
-    init(decodingManager: DecodingManager = DecodingManager(),
-         networkManager: NetworkManageable = NetworkManager()) {
+    init(
+        decodingManager: DecodingManager = DecodingManager(),
+        networkManager: NetworkManageable = NetworkManager()
+    ) {
         self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
@@ -30,8 +32,10 @@ final class ProductAddUseCase: ProductAddUseCaseProtocol {
     // MARK: Data uploading method
 
     func add(product: Uploadable, completion: @escaping (Result<Product, Error>) -> Void) {
-        networkManager.request(to: MarketEndPoint.postProduct,
-                               with: product) { result in
+        networkManager.request(
+            to: MarketEndPoint.postProduct,
+            with: product
+        ) { result in
             switch result {
             case .success(let data):
                 let decodedData = self.decodingManager.decode(data, to: Product.self)

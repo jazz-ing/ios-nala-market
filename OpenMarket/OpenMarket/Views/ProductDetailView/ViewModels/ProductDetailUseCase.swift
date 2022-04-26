@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 enum ProductDetailUseCaseError: LocalizedError {
-    
+
     case selfNotFound
     case invalidImageData
     
@@ -59,7 +59,7 @@ final class ProductDetailUseCase: ProductDetailUseCaseProtocol {
             }
         }
     }
-    
+
     func fetchImage(
         from urlString: String,
         completion: @escaping (Result<UIImage, Error>) -> Void

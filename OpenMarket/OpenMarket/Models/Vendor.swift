@@ -8,6 +8,7 @@
 import Foundation
 
 struct Vendor: Decodable {
+
     let name: String
     let id: Int
     let createdDate: String

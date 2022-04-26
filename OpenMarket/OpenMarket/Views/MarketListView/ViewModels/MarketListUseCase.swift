@@ -11,7 +11,7 @@ enum MarketListUseCaseError: LocalizedError {
     
     case selfNotFound
     case noMorePages
-    
+
     var errorDescription: String? {
         switch self {
         case .selfNotFound:
@@ -25,6 +25,7 @@ enum MarketListUseCaseError: LocalizedError {
 final class MarketListUseCase: MarketListUseCaseProtocol {
 
     // MARK: Properties
+
     private let decodingManager: DecodingManager
     private let networkManager: NetworkManageable
     private(set) var isFetching = false
@@ -34,8 +35,10 @@ final class MarketListUseCase: MarketListUseCaseProtocol {
 
     // MARK: Initializer
 
-    init(decodingManager: DecodingManager = DecodingManager(),
-         networkManager: NetworkManageable = NetworkManager()) {
+    init(
+        decodingManager: DecodingManager = DecodingManager(),
+        networkManager: NetworkManageable = NetworkManager()
+    ) {
         self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
@@ -54,7 +57,8 @@ final class MarketListUseCase: MarketListUseCaseProtocol {
         ) { [weak self] result in
             switch result {
             case .success(let data):
-                guard let decodedData = self?.decodingManager.decode(data, to: ProductList.self) else {
+                guard let decodedData = self?.decodingManager.decode(data, to: ProductList.self)
+                else {
                     completion(.failure(MarketListUseCaseError.selfNotFound))
                     return
                 }

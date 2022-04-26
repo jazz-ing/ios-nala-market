@@ -9,12 +9,12 @@ import Foundation
 import UIKit.UIImage
 
 enum ThumbnailUseCaseError: LocalizedError {
-    
+
     case invalidImageData
 }
 
 protocol ThumbnailUseCaseProtocol {
-    
+
     func fetchThumbnail(
         from urlString: String,
         completion: @escaping (Result<UIImage, Error>) -> Void

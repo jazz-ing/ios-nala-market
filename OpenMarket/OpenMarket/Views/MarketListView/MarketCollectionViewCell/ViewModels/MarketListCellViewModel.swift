@@ -55,7 +55,7 @@ extension MarketCollectionViewCellViewModel {
         setTextFormats()
         setThumbnail()
     }
-    
+
     private func setThumbnail() {
         let thumbnailURL = product.thumbnailURL
         thumbnailTask = useCase.fetchThumbnail(from: thumbnailURL) { [weak self] result in
@@ -89,13 +89,15 @@ extension MarketCollectionViewCellViewModel {
             stock = "\(Style.stockLabelPrefix) \(product.stock)"
         }
 
-        let productData = ProductData(name: product.name,
-                                      thumbnail: nil,
-                                      hasDiscountedPrice: hasDiscountedPrice,
-                                      price: price,
-                                      discountedPrice: discountedPrice,
-                                      isOutOfStock: isOutOfStock,
-                                      stock: stock)
+        let productData = ProductData(
+            name: product.name,
+            thumbnail: nil,
+            hasDiscountedPrice: hasDiscountedPrice,
+            price: price,
+            discountedPrice: discountedPrice,
+            isOutOfStock: isOutOfStock,
+            stock: stock
+        )
         state.value = .update(productData)
     }
 

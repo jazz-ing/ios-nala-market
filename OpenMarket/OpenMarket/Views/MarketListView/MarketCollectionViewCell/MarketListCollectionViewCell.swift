@@ -34,7 +34,7 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
+
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .body)
@@ -44,7 +44,7 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private let priceStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -141,19 +141,35 @@ extension MarketListCollectionViewCell {
 
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                        constant: Style.Constraint.cellPadding),
-            thumbnailImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            thumbnailImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor,
-                                                       multiplier: Style.Constraint.contentHeightRatio),
-            thumbnailImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor,
-                                                      multiplier: Style.Constraint.imageWidthRatio),
-            labelStackView.topAnchor.constraint(equalTo: thumbnailImageView.topAnchor),
-            labelStackView.leadingAnchor.constraint(equalTo: thumbnailImageView.trailingAnchor,
-                                                    constant: Style.Constraint.contentsSpacing),
-            labelStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,
-                                                     constant: -Style.Constraint.cellPadding),
-            labelStackView.heightAnchor.constraint(equalTo: thumbnailImageView.heightAnchor)
+            thumbnailImageView.leadingAnchor.constraint(
+                equalTo: contentView.leadingAnchor,
+                constant: Style.Constraint.cellPadding
+            ),
+            thumbnailImageView.centerYAnchor.constraint(
+                equalTo: contentView.centerYAnchor
+            ),
+            thumbnailImageView.heightAnchor.constraint(
+                equalTo: contentView.heightAnchor,
+                multiplier: Style.Constraint.contentHeightRatio
+            ),
+            thumbnailImageView.widthAnchor.constraint(
+                equalTo: contentView.widthAnchor,
+                multiplier: Style.Constraint.imageWidthRatio
+            ),
+            labelStackView.topAnchor.constraint(
+                equalTo: thumbnailImageView.topAnchor
+            ),
+            labelStackView.leadingAnchor.constraint(
+                equalTo: thumbnailImageView.trailingAnchor,
+                constant: Style.Constraint.contentsSpacing
+            ),
+            labelStackView.trailingAnchor.constraint(
+                equalTo: contentView.trailingAnchor,
+                constant: -Style.Constraint.cellPadding
+            ),
+            labelStackView.heightAnchor.constraint(
+                equalTo: thumbnailImageView.heightAnchor
+            )
         ])
     }
 }

@@ -50,8 +50,10 @@ final class ProductAddViewModel {
 
     // MARK: Initializer
 
-    init(encodingManager: EncodingManager = EncodingManager(),
-         useCase: ProductAddUseCaseProtocol = ProductAddUseCase()) {
+    init(
+        encodingManager: EncodingManager = EncodingManager(),
+        useCase: ProductAddUseCaseProtocol = ProductAddUseCase()
+    ) {
         self.encodingManager = encodingManager
         self.useCase = useCase
     }
@@ -77,12 +79,14 @@ extension ProductAddViewModel {
         images.append(image)
     }
 
-    func fillProduct(name: String?,
-                     descriptions: String?,
-                     price: String?,
-                     discountedPrice: String?,
-                     stock: String?,
-                     password: String?) {
+    func fillProduct(
+        name: String?,
+        descriptions: String?,
+        price: String?,
+        discountedPrice: String?,
+        stock: String?,
+        password: String?
+    ) {
         self.name = name
         self.descriptions = descriptions
         self.price = price
@@ -105,15 +109,18 @@ extension ProductAddViewModel {
               let currency = currency,
               let discountedPrice = discountedPrice,
               let stock = stock,
-              let password = password else { return nil }
+              let password = password
+        else { return nil }
 
-        let newProductParameter = PostParameter(name: name,
-                                                descriptions: descriptions,
-                                                price: Int(price) ?? .zero,
-                                                currency: currency,
-                                                discountedPrice: Int(discountedPrice) ?? .zero,
-                                                stock: Int(stock) ?? .zero,
-                                                password: password)
+        let newProductParameter = PostParameter(
+            name: name,
+            descriptions: descriptions,
+            price: Int(price) ?? .zero,
+            currency: currency,
+            discountedPrice: Int(discountedPrice) ?? .zero,
+            stock: Int(stock) ?? .zero,
+            password: password
+        )
         
         let data = encodingManager.encode(newProductParameter)
         switch data {

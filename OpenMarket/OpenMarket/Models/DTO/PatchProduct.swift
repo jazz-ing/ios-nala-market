@@ -11,8 +11,8 @@ struct PatchProduct: Uploadable {
     
     let parameter: Data?
     let images: [Data]?
-    
-    var asDictionary: [String : Any?] {
+
+    var asDictionary: [String: Any?] {
         [
             "params": self.parameter,
             "images": self.images

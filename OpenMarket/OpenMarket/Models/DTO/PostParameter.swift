@@ -18,7 +18,7 @@ struct PostParameter: BodyParameterType {
     let password: String
 
     enum CodingKeys: String, CodingKey {
-        
+
         case name, descriptions, price, currency, stock
         case discountedPrice = "discounted_price"
         case password = "secret"

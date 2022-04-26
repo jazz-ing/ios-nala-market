@@ -51,8 +51,7 @@ class NetworkingTests: XCTestCase {
         var outputValue: String?
 
         // when
-        networkManager?.request(to: MarketEndPoint.getProduct(id: 1),
-                                completion: { result in
+        networkManager?.request(to: MarketEndPoint.getProduct(id: 1)) { result in
             switch result {
             case .success(let data):
                 let decodedData = self.decodingManager!.decode(data, to: Product.self)
@@ -65,7 +64,7 @@ class NetworkingTests: XCTestCase {
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
-        })
+        }
 
         // then
         XCTAssertEqual(outputValue, expectedValue)
@@ -77,8 +76,9 @@ class NetworkingTests: XCTestCase {
         var outputValue: Int?
 
         // when
-        networkManager?.request(to: MarketEndPoint.getProductList(page: 1, numberOfItems: 10),
-                                completion: { result in
+        networkManager?.request(
+            to: MarketEndPoint.getProductList(page: 1, numberOfItems: 10)
+        ) { result in
             switch result {
             case .success(let data):
                 let decodedData = self.decodingManager!.decode(data, to: ProductList.self)
@@ -91,7 +91,7 @@ class NetworkingTests: XCTestCase {
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }
-        })
+        }
 
         // then
         XCTAssertEqual(outputValue, expectedValue)
@@ -104,14 +104,14 @@ class NetworkingTests: XCTestCase {
         var outputValue: String?
 
         // when
-        networkManager?.request(to: MarketEndPoint.getProduct(id: 1), completion: { result in
+        networkManager?.request(to: MarketEndPoint.getProduct(id: 1)) { result in
             switch result {
             case .success(_):
                 XCTFail()
             case .failure(let error):
                 outputValue = error.localizedDescription
             }
-        })
+        }
 
         // then
         XCTAssertEqual(outputValue, expectedValue)
@@ -124,15 +124,16 @@ class NetworkingTests: XCTestCase {
         var outputValue: String?
 
         // when
-        networkManager?.request(to: MarketEndPoint.getProductList(page: 1, numberOfItems: 10),
-                                completion: { result in
+        networkManager?.request(
+            to: MarketEndPoint.getProductList(page: 1, numberOfItems: 10)
+        ) { result in
             switch result {
             case .success(_):
                 XCTFail()
             case .failure(let error):
                 outputValue = error.localizedDescription
             }
-        })
+        }
 
         // then
         XCTAssertEqual(outputValue, expectedValue)
@@ -146,7 +147,7 @@ class NetworkingTests: XCTestCase {
         let expectation = XCTestExpectation(description: "NetworkManagerRequestExpectation")
 
         // when
-        networkManager?.request(to: MarketEndPoint.getProduct(id: 521), completion: { result in
+        networkManager?.request(to: MarketEndPoint.getProduct(id: 521)) { result in
             switch result {
             case .success(let data):
                 let decodedData = self.decodingManager!.decode(data, to: Product.self)
@@ -160,7 +161,7 @@ class NetworkingTests: XCTestCase {
                 XCTFail(error.localizedDescription)
             }
             expectation.fulfill()
-        })
+        }
         wait(for: [expectation], timeout: 5.0)
 
         // then
@@ -175,8 +176,9 @@ class NetworkingTests: XCTestCase {
         let expectation = XCTestExpectation(description: "NetworkManagerRequestExpectation")
 
         // when
-        networkManager?.request(to: MarketEndPoint.getProductList(page: 1, numberOfItems: 10),
-                                completion: { result in
+        networkManager?.request(
+            to: MarketEndPoint.getProductList(page: 1, numberOfItems: 10)
+        ) { result in
             switch result {
             case .success(let data):
                 let decodedData = self.decodingManager!.decode(data, to: ProductList.self)
@@ -190,7 +192,7 @@ class NetworkingTests: XCTestCase {
                 XCTFail(error.localizedDescription)
             }
             expectation.fulfill()
-        })
+        }
         wait(for: [expectation], timeout: 5.0)
 
         // then

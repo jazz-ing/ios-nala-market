@@ -11,7 +11,7 @@ struct PatchParameter: BodyParameterType {
     
     let name: String?
     let descriptions: String?
-    let thumbnailId: Int?
+    let thumbnailID: Int?
     let currency: String?
     let price: Int?
     let discountedPrice: Int?
@@ -20,6 +20,7 @@ struct PatchParameter: BodyParameterType {
     
     enum CodingKeys: String, CodingKey {
         case name, descriptions, price, currency, discountedPrice, stock
+        case thumbnailID = "thumbnailId"
         case password = "secret"
     }
 }

@@ -12,7 +12,7 @@ extension UIViewController {
         let okActionTitle = "확인"
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         let okAction = UIAlertAction(title: okActionTitle, style: .default)
-        
+
         alert.addAction(okAction)
         self.present(alert, animated: true)
     }

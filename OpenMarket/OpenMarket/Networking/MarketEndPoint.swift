@@ -72,6 +72,7 @@ enum MarketEndPoint: EndPointType {
 // MARK: - URL configuring method
 
 extension MarketEndPoint {
+
     func configureURL() -> URL? {
         var components = URLComponents(string: self.baseURL)
         components?.path = self.path

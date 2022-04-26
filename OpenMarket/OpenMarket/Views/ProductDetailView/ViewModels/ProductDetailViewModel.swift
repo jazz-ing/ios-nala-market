@@ -71,7 +71,7 @@ extension ProductDetailViewModel {
             self?.semaphore.signal()
         }
     }
-    
+
     private func fetchImages() {
         semaphore.wait()
         guard let images = product.imageInformations else {
@@ -104,12 +104,12 @@ extension ProductDetailViewModel {
         let isKRW = product.currency != Style.koreanCurrnecyText
         let currency = isKRW ? Style.koreanCurrencySign : Style.usCurrencySign
         let hasDiscountedPrice = product.discountedPrice != .zero
-        let discountedPrice = hasDiscountedPrice ?
-        "\(currency) \(product.price.priceFormatted())".strikeThrough() :
-            NSAttributedString()
-        let price = hasDiscountedPrice ?
-            "\(currency) \(product.discountedPrice.priceFormatted())" :
-            "\(currency) \(product.price.priceFormatted())"
+        let discountedPrice = hasDiscountedPrice
+            ? "\(currency) \(product.price.priceFormatted())".strikeThrough()
+            : NSAttributedString()
+        let price = hasDiscountedPrice
+            ? "\(currency) \(product.discountedPrice.priceFormatted())"
+            : "\(currency) \(product.price.priceFormatted())"
         let isOutOfStock = product.stock == .zero
         let stock: String
         if isOutOfStock {
@@ -120,14 +120,16 @@ extension ProductDetailViewModel {
             stock = "\(Style.stockLabelPrefix) \(product.stock)"
         }
 
-        let productData = ProductData(name: product.name,
-                                      description: product.description ?? Style.emptyText,
-                                      hasDiscountedPrice: hasDiscountedPrice,
-                                      discountedPrice: discountedPrice,
-                                      price: price,
-                                      isOutOfStock: isOutOfStock,
-                                      stock: stock,
-                                      numberOfImages: product.imageInformations?.count ?? .zero)
+        let productData = ProductData(
+            name: product.name,
+            description: product.description ?? Style.emptyText,
+            hasDiscountedPrice: hasDiscountedPrice,
+            discountedPrice: discountedPrice,
+            price: price,
+            isOutOfStock: isOutOfStock,
+            stock: stock,
+            numberOfImages: product.imageInformations?.count ?? .zero
+        )
 
         self.state.value = .populatedDetail(productData)
     }

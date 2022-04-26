@@ -172,10 +172,12 @@ extension ProductDetailViewController {
     private func addProductImage(_ image: UIImage, to index: Int) {
         let imageView = UIImageView()
         let xPosition: CGFloat = view.frame.width * CGFloat(index)
-        imageView.frame = .init(x: xPosition,
-                                y: .zero,
-                                width: imageScrollView.bounds.width,
-                                height: imageScrollView.bounds.height)
+        imageView.frame = .init(
+            x: xPosition,
+            y: .zero,
+            width: imageScrollView.bounds.width,
+            height: imageScrollView.bounds.height
+        )
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageScrollView.insertSubview(imageView, belowSubview: imageScrollViewPageControl)
@@ -201,14 +203,24 @@ extension ProductDetailViewController {
     private func setConstraints() {
         NSLayoutConstraint.activate([
             contentScrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            contentScrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            contentScrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            contentScrollView.leadingAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.leadingAnchor
+            ),
+            contentScrollView.trailingAnchor.constraint(
+                equalTo: view.safeAreaLayoutGuide.trailingAnchor
+            ),
             contentScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 
             contentView.topAnchor.constraint(equalTo: contentScrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: contentScrollView.contentLayoutGuide.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: contentScrollView.contentLayoutGuide.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: contentScrollView.contentLayoutGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(
+                equalTo: contentScrollView.contentLayoutGuide.leadingAnchor
+            ),
+            contentView.trailingAnchor.constraint(
+                equalTo: contentScrollView.contentLayoutGuide.trailingAnchor
+            ),
+            contentView.bottomAnchor.constraint(
+                equalTo: contentScrollView.contentLayoutGuide.bottomAnchor
+            ),
             contentView.widthAnchor.constraint(equalTo: contentScrollView.frameLayoutGuide.widthAnchor),
 
             imageScrollView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -216,17 +228,38 @@ extension ProductDetailViewController {
             imageScrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageScrollView.heightAnchor.constraint(equalTo: contentView.widthAnchor),
 
-            imageScrollViewPageControl.centerXAnchor.constraint(equalTo: imageScrollView.frameLayoutGuide.centerXAnchor),
-            imageScrollViewPageControl.bottomAnchor.constraint(equalTo: imageScrollView.frameLayoutGuide.bottomAnchor, constant: -Style.padding),
+            imageScrollViewPageControl.centerXAnchor.constraint(
+                equalTo: imageScrollView.frameLayoutGuide.centerXAnchor
+            ),
+            imageScrollViewPageControl.bottomAnchor.constraint(
+                equalTo: imageScrollView.frameLayoutGuide.bottomAnchor,
+                constant: -Style.padding
+            ),
 
-            textContentStackView.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: Style.padding),
-            textContentStackView.leadingAnchor.constraint(equalTo: contentView.readableContentGuide.leadingAnchor),
-            textContentStackView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
+            textContentStackView.topAnchor.constraint(
+                equalTo: imageScrollView.bottomAnchor,
+                constant: Style.padding
+            ),
+            textContentStackView.leadingAnchor.constraint(
+                equalTo: contentView.readableContentGuide.leadingAnchor
+            ),
+            textContentStackView.trailingAnchor.constraint(
+                equalTo: contentView.readableContentGuide.trailingAnchor
+            ),
 
-            descriptionTextView.topAnchor.constraint(equalTo: textContentStackView.bottomAnchor, constant: Style.padding),
-            descriptionTextView.leadingAnchor.constraint(equalTo: contentView.readableContentGuide.leadingAnchor),
-            descriptionTextView.trailingAnchor.constraint(equalTo: contentView.readableContentGuide.trailingAnchor),
-            descriptionTextView.bottomAnchor.constraint(equalTo: contentView.readableContentGuide.bottomAnchor)
+            descriptionTextView.topAnchor.constraint(
+                equalTo: textContentStackView.bottomAnchor,
+                constant: Style.padding
+            ),
+            descriptionTextView.leadingAnchor.constraint(
+                equalTo: contentView.readableContentGuide.leadingAnchor
+            ),
+            descriptionTextView.trailingAnchor.constraint(
+                equalTo: contentView.readableContentGuide.trailingAnchor
+            ),
+            descriptionTextView.bottomAnchor.constraint(
+                equalTo: contentView.readableContentGuide.bottomAnchor
+            )
         ])
     }
 

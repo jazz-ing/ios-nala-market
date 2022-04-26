@@ -8,6 +8,7 @@
 import Foundation
 
 struct ProductList: Decodable {
+
     let pageNumber: Int
     let itemsPerPage: Int
     let totalCount: Int

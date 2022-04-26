@@ -17,17 +17,22 @@ final class MockURLSession: URLSessionProtocol {
         self.isSuccess = isSuccess
     }
 
-    func dataTask(with request: URLRequest,
-                  completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-
-        let successResponse = HTTPURLResponse(url: URL(string: "www.test.com")!,
-                                              statusCode: 200,
-                                              httpVersion: "2",
-                                              headerFields: nil)
-        let failureResponse = HTTPURLResponse(url: URL(string: "www.test.com")!,
-                                              statusCode: 400,
-                                              httpVersion: "2",
-                                              headerFields: nil)
+    func dataTask(
+        with request: URLRequest,
+        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+    ) -> URLSessionDataTask {
+        let successResponse = HTTPURLResponse(
+            url: URL(string: "www.test.com")!,
+            statusCode: 200,
+            httpVersion: "2",
+            headerFields: nil
+        )
+        let failureResponse = HTTPURLResponse(
+            url: URL(string: "www.test.com")!,
+            statusCode: 400,
+            httpVersion: "2",
+            headerFields: nil
+        )
 
         let dataTask = MockURLSessionDataTask()
         var data: Data?
@@ -38,12 +43,12 @@ final class MockURLSession: URLSessionProtocol {
         } else if request.url == MarketEndPoint.getProduct(id: 1).configureURL() {
             let path = Bundle(for: type(of: self)).path(forResource: "Product", ofType: "json")
             data = try? String(contentsOfFile: path!).data(using: .utf8)
-        } else if request.httpMethod == "POST" {
-            
         }
 
         dataTask.resumDidCall = {
-            self.isSuccess ? completionHandler(data, successResponse, nil) : completionHandler(nil, failureResponse, nil)
+            self.isSuccess
+            ? completionHandler(data, successResponse, nil)
+            : completionHandler(nil, failureResponse, nil)
         }
 
         return dataTask
