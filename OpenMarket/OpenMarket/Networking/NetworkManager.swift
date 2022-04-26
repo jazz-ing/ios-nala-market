@@ -32,14 +32,20 @@ enum NetworkError: LocalizedError {
 
 struct NetworkManager: NetworkManageable {
 
+    // MARK: Properties
+
     private let session: URLSessionProtocol
     private let successStatusCode: Range<Int> = (200 ..< 300)
     private let multipartFormData: MultipartFormData
+
+    // MARK: Initializer
 
     init(session: URLSessionProtocol = URLSession.shared, multipartFormData: MultipartFormData = .init()) {
         self.session = session
         self.multipartFormData = multipartFormData
     }
+
+    // MARK: Networking methods
 
     private func dataTask(with request: URLRequest,
                           completion: @escaping SessionResult) -> URLSessionDataTask {

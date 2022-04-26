@@ -9,7 +9,11 @@ import UIKit
 
 final class ProductDetailViewController: UIViewController {
 
+    // MARK: Property
+
     private var viewModel: ProductDetailViewModel?
+
+    // MARK: Views
 
     private let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -121,6 +125,8 @@ final class ProductDetailViewController: UIViewController {
         return textView
     }()
 
+    // MARK: View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -130,10 +136,10 @@ final class ProductDetailViewController: UIViewController {
     }
 }
 
-// MARK: - Binding Method
+// MARK: - Data binding method
 
 extension ProductDetailViewController {
-    
+
     func bind(with viewModel: ProductDetailViewModel) {
         self.viewModel = viewModel
 
@@ -159,10 +165,10 @@ extension ProductDetailViewController {
     }
 }
 
-// MARK: - View Configuring Method
+// MARK: - View configuring method
 
 extension ProductDetailViewController {
-    
+
     private func addProductImage(_ image: UIImage, to index: Int) {
         let imageView = UIImageView()
         let xPosition: CGFloat = view.frame.width * CGFloat(index)
@@ -243,7 +249,7 @@ extension ProductDetailViewController {
     }
 }
 
-// MARK: - ScrollView Delegate
+// MARK: - UIScrollViewDelegate
 
 extension ProductDetailViewController: UIScrollViewDelegate {
 
@@ -253,7 +259,7 @@ extension ProductDetailViewController: UIScrollViewDelegate {
     }
 }
 
-// MARK: - NameSpaces
+// MARK: - Namespaces
 
 enum Style {
 

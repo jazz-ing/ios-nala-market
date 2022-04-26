@@ -22,14 +22,20 @@ protocol ThumbnailUseCaseProtocol {
 }
 
 final class ThumbnailUseCase: ThumbnailUseCaseProtocol {
-    
+
+    // MARK: Properties
+
     private let networkManager: NetworkManageable
     private var imageCache = NSCache<NSString, UIImage>()
-    
+
+    // MARK: Initializer
+
     init(networkManager: NetworkManageable = NetworkManager()) {
         self.networkManager = networkManager
     }
-    
+
+    // MARK: Thumbnail fetching method
+
     func fetchThumbnail(
         from urlString: String,
         completion: @escaping (Result<UIImage, Error>) -> Void
@@ -39,7 +45,7 @@ final class ThumbnailUseCase: ThumbnailUseCaseProtocol {
             completion(.success(cachedImage))
             return nil
         }
-        
+
         let task = networkManager.request(to: urlString) { [weak self] result in
             switch result {
             case .success(let data):

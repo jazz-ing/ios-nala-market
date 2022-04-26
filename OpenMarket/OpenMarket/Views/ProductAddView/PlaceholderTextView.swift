@@ -8,7 +8,7 @@
 import UIKit
 
 class PlaceholderTextView: UITextView {
-    
+
     enum TextViewType {
         case name
         case stock
@@ -18,8 +18,12 @@ class PlaceholderTextView: UITextView {
         case password
         case description
     }
-    
+
+    // MARK: Property
+
     private let type: TextViewType
+
+    // MARK: Initializers
 
     init(type: TextViewType) {
         self.type = type
@@ -35,6 +39,11 @@ class PlaceholderTextView: UITextView {
         setStyles()
         setPlaceHolderText()
     }
+}
+
+// MARK: - View configuring methods
+
+extension PlaceholderTextView {
 
     func setPlaceHolderText() {
         switch type {
@@ -67,10 +76,12 @@ class PlaceholderTextView: UITextView {
     }
 }
 
+// MARK: - Namespaces
+
 extension PlaceholderTextView {
 
     enum Style {
-        
+
         static let cornerRadius: CGFloat = 10
         static let borderWidth: CGFloat = 1
 

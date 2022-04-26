@@ -1,8 +1,8 @@
 //
 //  MarketMainViewController.swift
-//  Created by yagom. 
+//  Created by yagom.
 //  Copyright © yagom. All rights reserved.
-// 
+//
 
 import UIKit
 
@@ -13,8 +13,12 @@ final class MarketMainViewController: UIViewController {
         case list
     }
 
+    // MARK: Properties
+
     private var cellType: CellType = .grid
     private let viewModel = MarketListViewModel()
+
+    // MARK: View
 
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,6 +32,8 @@ final class MarketMainViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+
+    // MARK: View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +49,8 @@ final class MarketMainViewController: UIViewController {
 // MARK: - View Configuring Method
 
 extension MarketMainViewController {
+
+    // MARK: Data binding method
 
     private func bindWithViewModel() {
         viewModel.state.bind { [weak self] state in
@@ -60,6 +68,8 @@ extension MarketMainViewController {
             }
         }
     }
+
+    // MARK: View setting method
 
     private func setupViews() {
         view.backgroundColor = .white
@@ -96,12 +106,6 @@ extension MarketMainViewController {
         navigationItem.rightBarButtonItems = [addProductButton, changingCellTypeButton]
     }
 
-    @objc private func changingCellTypeButtonTapped() {
-        changeCellType()
-        changeCellTypeBarButtonImage()
-        collectionView.reloadData()
-    }
-
     private func changeCellType() {
         cellType = cellType == .grid ? .list : .grid
     }
@@ -112,6 +116,14 @@ extension MarketMainViewController {
         } else {
             navigationItem.rightBarButtonItems?.last?.image = Style.ChangingCellTypeBarButton.gridImage
         }
+    }
+
+    // MARK: Actions
+
+    @objc private func changingCellTypeButtonTapped() {
+        changeCellType()
+        changeCellTypeBarButtonImage()
+        collectionView.reloadData()
     }
 
     @objc private func addProductButtonTapped() {
@@ -136,7 +148,7 @@ extension MarketMainViewController {
     }
 }
 
-// MARK: - CollectionView DataSource
+// MARK: - UICollectionViewDataSource
 
 extension MarketMainViewController: UICollectionViewDataSource {
 
@@ -173,7 +185,7 @@ extension MarketMainViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - CollectionView Deleagte
+// MARK: - UICollectionViewDelegate
 
 extension MarketMainViewController: UICollectionViewDelegate {
 

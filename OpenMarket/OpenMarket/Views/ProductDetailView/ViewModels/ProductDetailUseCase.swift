@@ -25,15 +25,21 @@ enum ProductDetailUseCaseError: LocalizedError {
 
 final class ProductDetailUseCase: ProductDetailUseCaseProtocol {
 
+    // MARK: Properties
+
     private let decodingManager: DecodingManager
     private let networkManager: NetworkManageable
-    
+
+    // MARK: Initializer
+
     init(decodingManager: DecodingManager = DecodingManager(),
          networkManager: NetworkManageable = NetworkManager()) {
         self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
-    
+
+    // MARK: Data fetching methods
+
     func fetchProductDetail(of id: Int, completion: @escaping (Result<Product, Error>) -> Void) {
         networkManager.request(to: MarketEndPoint.getProduct(id: id)) { [weak self] result in
             switch result {

@@ -8,10 +8,14 @@
 import UIKit
 
 class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
-    
+
+    // MARK: Properties
+
     static let identifier = Text.cellIdentifier
     private var viewModel: MarketCollectionViewCellViewModel?
-    
+
+    // MARK: Views
+
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = Style.ThumbnailImageView.cornerRadius
@@ -50,7 +54,7 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
+
     private let discountedPriceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .subheadline)
@@ -59,7 +63,7 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .headline)
@@ -68,7 +72,7 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
     private let stockLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .footnote)
@@ -77,14 +81,16 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    
+
+    // MARK: Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setCellBorder()
         setUpSubviews()
         setConstraints()
     }
-    
+
     @available(*, unavailable, message: "This initializer is not available.")
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -92,17 +98,19 @@ class MarketListCollectionViewCell: UICollectionViewCell, MarketCellType {
         setUpSubviews()
         setConstraints()
     }
-    
+
+    // MARK: Override
+
     override func prepareForReuse() {
         super.prepareForReuse()
         reset()
     }
 }
 
-// MARK: - View Configuring Method
+// MARK: - View configuring method
 
 extension MarketListCollectionViewCell {
-    
+
     private func reset() {
         viewModel?.cancelThumbnailRequest()
         thumbnailImageView.image = nil
@@ -130,7 +138,7 @@ extension MarketListCollectionViewCell {
         contentView.addSubview(thumbnailImageView)
         contentView.addSubview(labelStackView)
     }
-    
+
     private func setConstraints() {
         NSLayoutConstraint.activate([
             thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
@@ -150,13 +158,13 @@ extension MarketListCollectionViewCell {
     }
 }
 
-// MARK: - Binding Method
+// MARK: - Data binding method
 
 extension MarketListCollectionViewCell {
 
     func bind(with viewModel: MarketCollectionViewCellViewModel) {
         self.viewModel = viewModel
-        
+
         viewModel.state.bind { [weak self] state in
             switch state {
             case .update(let productData):
@@ -184,20 +192,20 @@ extension MarketListCollectionViewCell {
     }
 }
 
-// MARK: - NameSpace
+// MARK: - Namespaces
 
 extension MarketListCollectionViewCell {
-    
+
     enum Style {
-        
+
         static let borderWidth: CGFloat = 0.2
         static let borderColor: CGColor = .init(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.2)
         static let cornerRadius: CGFloat = 0.5
-        
+
         enum ThumbnailImageView {
             static let cornerRadius: CGFloat = 10
         }
-        
+
         enum LabelStackView {
             static let spacing: CGFloat = 8
         }
@@ -205,7 +213,7 @@ extension MarketListCollectionViewCell {
         enum PriceStackView {
             static let spacing: CGFloat = 6
         }
-        
+
         enum AccessibilityIdentifier {
             static let cell = "MarketListCell"
             static let thumbnailImageView = "thumbnail"
@@ -214,7 +222,7 @@ extension MarketListCollectionViewCell {
             static let priceLabel = "price"
             static let stockLabel = "stock"
         }
-        
+
         enum Constraint {
             static let cellPadding: CGFloat = 8
             static let contentsSpacing: CGFloat = 12
@@ -222,7 +230,7 @@ extension MarketListCollectionViewCell {
             static let imageWidthRatio: CGFloat = 0.3
         }
     }
-    
+
     enum Text {
         static let cellIdentifier = "MarketListCollectionViewCell"
     }

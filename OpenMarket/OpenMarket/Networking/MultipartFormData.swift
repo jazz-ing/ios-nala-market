@@ -10,6 +10,8 @@ import UIKit
 
 final class MultipartFormData {
 
+    // MARK: Helper types
+
     enum EncodingCharacter {
         static let crlf = "\r\n"
     }
@@ -35,10 +37,14 @@ final class MultipartFormData {
         }
     }
 
+    // MARK: Properties
+
     let boundary = "NalaMarketBoundary-" + UUID().uuidString
     lazy var contentType = "multipart/form-data; boundary=\(self.boundary)"
     let imageMimeType = "image/jpeg"
     private var body = Data()
+
+    // MARK: Encoding methods
 
     func encode(_ requestBody: Uploadable) -> Data {
         for parameter in requestBody.asDictionary {
@@ -85,6 +91,8 @@ final class MultipartFormData {
 
         return Data(headers.utf8)
     }
+
+    // MARK: Boundary generating methods
 
     private func initialBoundaryData() -> Data {
         BoundaryGenerator.boundaryData(for: .initial, boundary: boundary)

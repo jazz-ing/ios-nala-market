@@ -9,12 +9,16 @@ import Foundation
 
 final class MarketListViewModel {
 
+    // MARK: View state
+
     enum State {
         case fetching
         case populated(indexPaths: [IndexPath])
         case empty
         case error(Error)
     }
+
+    // MARK: Properties
 
     private let useCase: MarketListUseCaseProtocol
     private(set) var state: Observable<State> = Observable(.fetching)
@@ -32,11 +36,15 @@ final class MarketListViewModel {
             }
         }
     }
-    
+
+    // MARK: Initializer
+
     init(useCase: MarketListUseCaseProtocol = MarketListUseCase()) {
         self.useCase = useCase
     }
-    
+
+    // MARK: Data binding method
+
     func update() {
         useCase.fetchProductList { [weak self] result in
             switch result {

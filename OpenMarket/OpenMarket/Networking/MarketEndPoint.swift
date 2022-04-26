@@ -1,5 +1,5 @@
 //
-//  EndPoint.swift
+//  MarketEndPoint.swift
 //  OpenMarket
 //
 //  Created by 이윤주 on 2022/01/19.
@@ -14,6 +14,8 @@ enum MarketEndPoint: EndPointType {
     case postProduct
     case patchProduct(id: Int)
     case deleteProduct(id: Int, password: String)
+
+    // MARK: URL Components
 
     var baseURL: String {
         return "https://market-training.yagom-academy.kr/"
@@ -66,6 +68,8 @@ enum MarketEndPoint: EndPointType {
         }
     }
 }
+
+// MARK: - URL configuring method
 
 extension MarketEndPoint {
     func configureURL() -> URL? {

@@ -8,10 +8,14 @@
 import UIKit
 
 final class MarketGridCollectionViewCell: UICollectionViewCell, MarketCellType {
-    
+
+    // MARK: Properties
+
     static let identifier = "MarketGridCollectionViewCell"
     private var viewModel: MarketCollectionViewCellViewModel?
-    
+
+    // MARK: Views
+
     private let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = Style.ThumbnailImageView.cornerRadius
@@ -75,6 +79,8 @@ final class MarketGridCollectionViewCell: UICollectionViewCell, MarketCellType {
         return label
     }()
 
+    // MARK: Initializers
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setCellBorder()
@@ -90,13 +96,15 @@ final class MarketGridCollectionViewCell: UICollectionViewCell, MarketCellType {
         setConstraints()
     }
 
+    // MARK: Override
+
     override func prepareForReuse() {
         super.prepareForReuse()
         reset()
     }
 }
 
-// MARK: - View Configuring MEthod
+// MARK: - View configuring method
 
 extension MarketGridCollectionViewCell {
 
@@ -148,7 +156,7 @@ extension MarketGridCollectionViewCell {
     }
 }
 
-// MARK: - Binding Method
+// MARK: - Data binding methods
 
 extension MarketGridCollectionViewCell {
 
@@ -198,11 +206,11 @@ extension MarketGridCollectionViewCell {
         enum LabelStackView {
             static let spacing: CGFloat = 8
         }
-        
+
         enum PriceStackView {
             static let spacing: CGFloat = .zero
         }
-        
+
         enum AccessibilityIdentifier {
             static let cell: String = "marketGridCell"
             static let thumbnailImageView: String = "thumbnail"
@@ -218,4 +226,3 @@ extension MarketGridCollectionViewCell {
         }
     }
 }
-

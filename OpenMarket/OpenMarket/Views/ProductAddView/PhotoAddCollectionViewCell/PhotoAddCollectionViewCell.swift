@@ -9,10 +9,13 @@ import UIKit
 
 final class PhotoAddCollectionViewCell: UICollectionViewCell {
 
-    static let identifier = "PhotoAddCollectionViewCell"
+    // MARK: Properties
 
+    static let identifier = "PhotoAddCollectionViewCell"
     private var viewModel: PhotoAddCellViewModel?
-    
+
+    // MARK: View
+
     private let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "camera.viewfinder")
@@ -24,6 +27,8 @@ final class PhotoAddCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
+    // MARK: Initializers
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,6 +42,11 @@ final class PhotoAddCollectionViewCell: UICollectionViewCell {
         setupView()
         setConstraints()
     }
+}
+
+// MARK: - Data binding methods
+
+extension PhotoAddCollectionViewCell {
 
     func bind(with viewModel: PhotoAddCellViewModel) {
         self.viewModel = viewModel
@@ -49,6 +59,11 @@ final class PhotoAddCollectionViewCell: UICollectionViewCell {
     func setImage(_ image: UIImage) {
         viewModel?.setImage(image)
     }
+}
+
+// MARK: - View configuring methods
+
+extension PhotoAddCollectionViewCell {
 
     private func setupView() {
         contentView.addSubview(photoImageView)

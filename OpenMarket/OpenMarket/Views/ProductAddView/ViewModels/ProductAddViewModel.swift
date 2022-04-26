@@ -8,13 +8,17 @@
 import UIKit.UIImage
 
 final class ProductAddViewModel {
-    
+
+    // MARK: View state
+
     enum State {
         case empty
         case appendImage(index: Int)
         case add(Product)
         case error(Error)
     }
+
+    // MARK: Properties
 
     private let encodingManager: EncodingManager
     private let useCase: ProductAddUseCaseProtocol
@@ -44,11 +48,18 @@ final class ProductAddViewModel {
         }
     }
 
+    // MARK: Initializer
+
     init(encodingManager: EncodingManager = EncodingManager(),
          useCase: ProductAddUseCaseProtocol = ProductAddUseCase()) {
         self.encodingManager = encodingManager
         self.useCase = useCase
     }
+}
+
+// MARK: - Data binding methods
+
+extension ProductAddViewModel {
 
     func addNewProduct() {
         guard let product = createNewProduct() else { return }

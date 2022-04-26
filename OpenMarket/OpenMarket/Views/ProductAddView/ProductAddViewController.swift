@@ -10,7 +10,11 @@ import PhotosUI
 
 final class ProductAddViewController: UIViewController {
 
+    // MARK: Properties
+
     private var viewModel: ProductAddViewModel?
+
+    // MARK: Views
 
     private let contentScrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -106,6 +110,8 @@ final class ProductAddViewController: UIViewController {
         return activityIndicator
     }()
 
+    // MARK: View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -117,7 +123,7 @@ final class ProductAddViewController: UIViewController {
     }
 }
 
-// MARK: - Binding Method
+// MARK: - Data binding method
 
 extension ProductAddViewController {
     
@@ -142,7 +148,7 @@ extension ProductAddViewController {
     }
 }
 
-// MARK: - View Configuring Method
+// MARK: - View configuring method
 
 extension ProductAddViewController {
 
@@ -230,16 +236,6 @@ extension ProductAddViewController {
         navigationItem.rightBarButtonItem = registerButton
     }
     
-    @objc func registerButtonTapped() {
-        resignAllTextViewFirstResponder()
-        guard viewModel?.createNewProduct() != nil else {
-            showAlert(Style.Alert.requiredContentsNotFilledAlertTitle)
-            return
-        }
-        activityIndicator.startAnimating()
-        viewModel?.addNewProduct()
-    }
-    
     func resignAllTextViewFirstResponder() {
         nameTextView.resignFirstResponder()
         stockTextView.resignFirstResponder()
@@ -275,6 +271,18 @@ extension ProductAddViewController {
         currencyTextView.inputAccessoryView = toolBar
     }
 
+    // MARK: Actions
+
+    @objc func registerButtonTapped() {
+        resignAllTextViewFirstResponder()
+        guard viewModel?.createNewProduct() != nil else {
+            showAlert(Style.Alert.requiredContentsNotFilledAlertTitle)
+            return
+        }
+        activityIndicator.startAnimating()
+        viewModel?.addNewProduct()
+    }
+
     @objc func donePicker() {
         let row = currencyPickerView.selectedRow(inComponent: Style.CurrencyPickerView.firstWheelIndex)
         currencyPickerView.selectRow(row,
@@ -293,7 +301,7 @@ extension ProductAddViewController {
     }
 }
 
-// MARK: - PhotoCollectionView Datasource
+// MARK: - UICollectionViewDataSource
 
 extension ProductAddViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -321,7 +329,7 @@ extension ProductAddViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - PhotoCollectionView Delegate
+// MARK: - UICollectionViewDelegate
 
 extension ProductAddViewController: UICollectionViewDelegate {
     
@@ -334,7 +342,7 @@ extension ProductAddViewController: UICollectionViewDelegate {
     }
 }
 
-// MARK: - MultipleImagePicker Delegate
+// MARK: - PHPickerViewControllerDelegate
 
 extension ProductAddViewController: PHPickerViewControllerDelegate {
     
@@ -357,7 +365,7 @@ extension ProductAddViewController: PHPickerViewControllerDelegate {
     }
 }
 
-// MARK: - ImagePicker Delegate
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
 
 extension ProductAddViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -376,7 +384,7 @@ extension ProductAddViewController: UIImagePickerControllerDelegate, UINavigatio
     }
 }
 
-// MARK: - CurrencyPickerView Datasource, Delegate
+// MARK: - UIPickerViewDataSource, UIPickerViewDelegate
 
 extension ProductAddViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -392,7 +400,7 @@ extension ProductAddViewController: UIPickerViewDataSource, UIPickerViewDelegate
     }
 }
 
-// MARK: - TextView Delegate
+// MARK: - UITextViewDelegate
 
 extension ProductAddViewController: UITextViewDelegate {
     
@@ -415,7 +423,7 @@ extension ProductAddViewController: UITextViewDelegate {
     }
 }
 
-// MARK: - NameSpace
+// MARK: - Namespaces
 
 extension ProductAddViewController {
 
@@ -472,5 +480,3 @@ extension ProductAddViewController {
         }
     }
 }
-
-

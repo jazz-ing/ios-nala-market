@@ -9,7 +9,9 @@ import Foundation
 import UIKit.UIImage
 
 final class ProductDetailViewModel {
-    
+
+    // MARK: Viewmodel data
+
     struct ProductData {
         let name: String
         let description: String
@@ -20,13 +22,17 @@ final class ProductDetailViewModel {
         let stock: String
         let numberOfImages: Int
     }
-    
+
+    // MARK: View state
+
     enum State {
         case fetching
         case populatedDetail(ProductData)
         case populatedImage(UIImage, Int)
         case error(Error)
     }
+
+    // MARK: Properties
 
     private let useCase: ProductDetailUseCaseProtocol
     private let semaphore = DispatchSemaphore(value: 1)
@@ -35,11 +41,18 @@ final class ProductDetailViewModel {
     private(set) var images: [UIImage] = []
     private(set) var imageDataTasks: [Cancellable?] = []
 
+    // MARK: Initializer
+
     init(useCase: ProductDetailUseCaseProtocol = ProductDetailUseCase(), product: Product) {
         self.useCase = useCase
         self.product = product
     }
-    
+}
+
+// MARK: - Data binding methods
+
+extension ProductDetailViewModel {
+
     func update() {
         fetchProductDetail()
         fetchImages()

@@ -23,20 +23,25 @@ enum MarketListUseCaseError: LocalizedError {
 }
 
 final class MarketListUseCase: MarketListUseCaseProtocol {
-    
+
+    // MARK: Properties
     private let decodingManager: DecodingManager
     private let networkManager: NetworkManageable
     private(set) var isFetching = false
     private(set) var isLastPage = false
     private(set) var page = 1
     private let numberOfItems = 10
-    
+
+    // MARK: Initializer
+
     init(decodingManager: DecodingManager = DecodingManager(),
          networkManager: NetworkManageable = NetworkManager()) {
         self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
-    
+
+    // MARK: Data fetching method
+
     func fetchProductList(completion: @escaping (Result<[Product], Error>) -> Void) {
         if isFetching || isLastPage {
             return

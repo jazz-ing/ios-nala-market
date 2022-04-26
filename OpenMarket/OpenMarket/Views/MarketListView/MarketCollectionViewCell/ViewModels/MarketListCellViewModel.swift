@@ -9,7 +9,9 @@ import Foundation
 import UIKit.UIImage
 
 final class MarketCollectionViewCellViewModel {
-    
+
+    // MARK: Viewmodel data
+
     struct ProductData {
         let name: String
         var thumbnail: UIImage?
@@ -19,23 +21,36 @@ final class MarketCollectionViewCellViewModel {
         let isOutOfStock: Bool
         let stock: String
     }
-    
+
+    // MARK: View state
+
     enum State {
         case empty
         case update(MarketCollectionViewCellViewModel.ProductData)
         case error(Error)
     }
 
+    // MARK: Properties
+
     private(set) var state: Observable<State> = Observable(.empty)
     private let useCase: ThumbnailUseCaseProtocol
     private(set) var thumbnailTask: Cancellable?
     private let product: Product
 
+    // MARK: Initializer
+
     init(useCase: ThumbnailUseCaseProtocol = ThumbnailUseCase(), product: Product) {
         self.useCase = useCase
         self.product = product
     }
-    
+}
+
+// MARK: - Cell contents configuring methods
+
+extension MarketCollectionViewCellViewModel {
+
+    // MARK: Data binding methods
+
     func setContents() {
         setTextFormats()
         setThumbnail()
@@ -53,15 +68,6 @@ final class MarketCollectionViewCellViewModel {
                 self?.state.value = .error(error)
             }
         }
-    }
-
-    func prefetchThumbnail() {
-        let thumbnailURL = product.thumbnailURL
-        thumbnailTask = useCase.fetchThumbnail(from: thumbnailURL) { _ in }
-    }
-
-    func cancelThumbnailRequest() {
-        thumbnailTask?.cancel()
     }
 
     private func setTextFormats() {
@@ -92,6 +98,17 @@ final class MarketCollectionViewCellViewModel {
                                       stock: stock)
         state.value = .update(productData)
     }
+
+    // MARK: ThumbnailTask managing methods
+
+    func prefetchThumbnail() {
+        let thumbnailURL = product.thumbnailURL
+        thumbnailTask = useCase.fetchThumbnail(from: thumbnailURL) { _ in }
+    }
+
+    func cancelThumbnailRequest() {
+        thumbnailTask?.cancel()
+    }
 }
 
 // MARK: - NameSpace
@@ -106,4 +123,3 @@ extension MarketCollectionViewCellViewModel {
         static let stockUpperLimitText: String = "999+"
     }
 }
-

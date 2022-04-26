@@ -13,16 +13,22 @@ protocol ProductAddUseCaseProtocol {
 }
 
 final class ProductAddUseCase: ProductAddUseCaseProtocol {
-    
+
+    // MARK: Properties
+
     private let decodingManager: DecodingManager
     private let networkManager: NetworkManageable
-    
+
+    // MARK: Initializer
+
     init(decodingManager: DecodingManager = DecodingManager(),
          networkManager: NetworkManageable = NetworkManager()) {
         self.decodingManager = decodingManager
         self.networkManager = networkManager
     }
-    
+
+    // MARK: Data uploading method
+
     func add(product: Uploadable, completion: @escaping (Result<Product, Error>) -> Void) {
         networkManager.request(to: MarketEndPoint.postProduct,
                                with: product) { result in
