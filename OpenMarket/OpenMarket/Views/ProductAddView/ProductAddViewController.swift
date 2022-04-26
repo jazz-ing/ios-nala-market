@@ -53,33 +53,34 @@ final class ProductAddViewController: UIViewController {
         picker.allowsEditing = true
         return picker
     }()
-
-    private let nameTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.isScrollEnabled = false
-        textView.text = Style.PlaceHolderText.name
-        textView.textColor = .systemGray3
-        textView.layer.masksToBounds = true
-        textView.layer.cornerRadius = Style.TextView.cornerRadius
-        textView.layer.borderWidth = Style.TextView.borderWidth
-        textView.layer.borderColor = UIColor.systemGray3.cgColor
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    
+    private let nameTextView: PlaceholderTextView = PlaceholderTextView(type: .name)
+    private let passwordTextView: PlaceholderTextView = PlaceholderTextView(type: .password)
+    private let descriptionTextView: PlaceholderTextView = PlaceholderTextView(type: .description)
+    
+    private let stockTextView: PlaceholderTextView = {
+        let stockTextView = PlaceholderTextView(type: .stock)
+        stockTextView.keyboardType = .decimalPad
+        return stockTextView
     }()
-
-    private let stockTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.isScrollEnabled = false
-        textView.text = Style.PlaceHolderText.stock
-        textView.textColor = .systemGray3
-        textView.layer.masksToBounds = true
-        textView.layer.cornerRadius = Style.TextView.cornerRadius
-        textView.layer.borderWidth = Style.TextView.borderWidth
-        textView.layer.borderColor = UIColor.systemGray3.cgColor
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
+    
+    private let currencyTextView: PlaceholderTextView = {
+        let currencyTextView = PlaceholderTextView(type: .currency)
+        currencyTextView.setContentHuggingPriority(.required, for: .horizontal)
+        currencyTextView.setContentCompressionResistancePriority(.required, for: .horizontal)
+        return currencyTextView
+    }()
+    
+    private let priceTextView: PlaceholderTextView = {
+        let priceTextView = PlaceholderTextView(type: .price)
+        priceTextView.keyboardType = .decimalPad
+        return priceTextView
+    }()
+    
+    private let discountedTextView: PlaceholderTextView = {
+        let discountedTextView = PlaceholderTextView(type: .discountedPrice)
+        discountedTextView.keyboardType = .decimalPad
+        return discountedTextView
     }()
 
     private let priceStackView: UIStackView = {
@@ -95,75 +96,6 @@ final class ProductAddViewController: UIViewController {
     private let currencyPickerView: UIPickerView = {
         let pickerView = UIPickerView()
         return pickerView
-    }()
-
-    private let currencyTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.text = Style.PlaceHolderText.currency
-        textView.textColor = .systemGray3
-        textView.setContentHuggingPriority(.required, for: .horizontal)
-        textView.setContentCompressionResistancePriority(.required, for: .horizontal)
-        textView.isScrollEnabled = false
-        textView.layer.masksToBounds = true
-        textView.layer.cornerRadius = Style.TextView.cornerRadius
-        textView.layer.borderWidth = Style.TextView.borderWidth
-        textView.layer.borderColor = UIColor.systemGray3.cgColor
-        return textView
-    }()
-
-    private let priceTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.isScrollEnabled = false
-        textView.text = Style.PlaceHolderText.price
-        textView.textColor = .systemGray3
-        textView.layer.masksToBounds = true
-        textView.layer.cornerRadius = Style.TextView.cornerRadius
-        textView.layer.borderWidth = Style.TextView.borderWidth
-        textView.layer.borderColor = UIColor.systemGray3.cgColor
-        return textView
-    }()
-
-    private let discountedTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.isScrollEnabled = false
-        textView.text = Style.PlaceHolderText.discountedPrice
-        textView.textColor = .systemGray3
-        textView.layer.masksToBounds = true
-        textView.layer.cornerRadius = Style.TextView.cornerRadius
-        textView.layer.borderWidth = Style.TextView.borderWidth
-        textView.layer.borderColor = UIColor.systemGray3.cgColor
-        return textView
-    }()
-
-    private let passwordTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.isScrollEnabled = false
-        textView.text = Style.PlaceHolderText.password
-        textView.textColor = .systemGray3
-        textView.layer.masksToBounds = true
-        textView.layer.cornerRadius = Style.TextView.cornerRadius
-        textView.layer.borderWidth = Style.TextView.borderWidth
-        textView.layer.borderColor = UIColor.systemGray3.cgColor
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
-    }()
-
-    private let descriptionTextView: UITextView = {
-        let textView = UITextView()
-        textView.font = UIFont.preferredFont(forTextStyle: .body)
-        textView.text = Style.PlaceHolderText.description
-        textView.textColor = .systemGray3
-        textView.isScrollEnabled = false
-        textView.layer.masksToBounds = true
-        textView.layer.cornerRadius = Style.TextView.cornerRadius
-        textView.layer.borderWidth = Style.TextView.borderWidth
-        textView.layer.borderColor = UIColor.systemGray3.cgColor
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        return textView
     }()
 
     private lazy var activityIndicator: UIActivityIndicatorView = {
